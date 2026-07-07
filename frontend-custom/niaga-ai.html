@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NiagaAI - Laot Niaga</title>
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html"><img class="brand-logo" src="assets/img/logo.svg" alt="Laot Niaga"></a>
+      <a class="btn btn-outline-laot" href="dashboard-umkm.html">Dashboard</a>
+    </div>
+  </nav>
+  <main class="page-shell">
+    <div class="container row">
+      <div class="col-lg-5">
+        <span class="badge">NiagaAI</span>
+        <h1 class="section-title mt-3">Asisten Branding Produk Laut</h1>
+        <p class="text-muted">Masukkan informasi produk, lalu NiagaAI membuat ide nama merek, slogan, deskripsi produk, dan profil UMKM.</p>
+        <form class="panel p-4" data-ai-form>
+          <input class="mb-3" name="product_name" placeholder="Nama produk" required>
+          <input class="mb-3" name="category" placeholder="Kategori">
+          <input class="mb-3" name="origin" placeholder="Asal produk">
+          <textarea class="mb-3" name="unique_value" rows="3" placeholder="Keunggulan produk"></textarea>
+          <button class="btn btn-laot w-100">Buat Rekomendasi</button>
+        </form>
+      </div>
+      <div class="col-lg-7">
+        <div class="chat-window panel p-4" data-ai-chat>
+          <div class="chat-bubble mb-3">Masukkan produk UMKM kamu di form sebelah.</div>
+          <div class="chat-bubble ai mb-3">Saya siap membantu membuat branding yang lebih meyakinkan.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>

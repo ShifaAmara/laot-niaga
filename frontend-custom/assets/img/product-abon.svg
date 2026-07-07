@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" role="img" aria-label="Abon Ikan Laut">
+  <rect width="520" height="360" rx="28" fill="#fff5cf"/>
+  <ellipse cx="260" cy="278" rx="162" ry="38" fill="#e7c95d"/>
+  <path d="M175 115h170l-18 165H193Z" fill="#ffffff"/>
+  <path d="M190 115h140l-12-42H202Z" fill="#2E3263"/>
+  <rect x="205" y="154" width="110" height="70" rx="14" fill="#FCD53B"/>
+  <path d="M218 190c26-20 58-17 80 2-25 20-56 22-80-2Z" fill="#2E3263"/>
+  <text x="212" y="248" fill="#2E3263" font-family="Arial" font-size="24" font-weight="700">Abon Ikan</text>
+</svg>

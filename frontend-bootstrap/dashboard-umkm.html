@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard UMKM - Laot Niaga</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body data-dashboard="true">
+  <nav class="navbar bg-white sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img class="brand-logo" src="assets/img/lopgo laot niaga.png"
+          alt="Laot Niaga"></a>
+      <a class="btn btn-outline-laot" href="niaga-ai.html">NiagaAI</a>
+    </div>
+  </nav>
+  <main class="page-shell">
+    <div class="container">
+      <div class="mb-4">
+        <span class="badge badge-laot rounded-pill mb-2">Panel Kontrol UMKM</span>
+        <h1 class="section-title">Selamat datang, <span data-user-name>UMKM Laot Niaga</span></h1>
+      </div>
+      <div class="dashboard-grid mb-4">
+        <div class="stat p-4 rounded-3">
+          <p class="text-muted mb-1">Produk</p>
+          <h2 data-count-products>0</h2>
+        </div>
+        <div class="stat p-4 rounded-3">
+          <p class="text-muted mb-1">Item Terjual</p>
+          <h2 data-sold-items>0</h2>
+        </div>
+        <div class="stat p-4 rounded-3">
+          <p class="text-muted mb-1">Omzet</p>
+          <h2 data-revenue>Rp0</h2>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <form class="panel bg-white rounded-3 p-4" data-product-form>
+            <h2 class="h4 fw-bold mb-3">Tambah Produk</h2>
+            <input class="form-control mb-3" name="name" placeholder="Nama produk" required>
+            <select class="form-select mb-3" name="category" required>
+              <option value="">Pilih kategori</option>
+              <option>Ikan Olahan</option>
+              <option>Siap Santap</option>
+              <option>Camilan Laut</option>
+            </select>
+            <div class="row g-2">
+              <div class="col"><input class="form-control mb-3" type="number" name="price" placeholder="Harga" required>
+              </div>
+              <div class="col"><input class="form-control mb-3" type="number" name="stock" placeholder="Stok" required>
+              </div>
+            </div>
+            <input class="form-control mb-3" name="unit" placeholder="Satuan, contoh: pack">
+            <input class="form-control mb-3" name="origin" placeholder="Asal produk">
+            <textarea class="form-control mb-3" name="description" rows="3" placeholder="Deskripsi produk"></textarea>
+            <input class="form-control mb-3" type="file" name="image" accept="image/*">
+            <button class="btn btn-laot w-100">Simpan Produk</button>
+          </form>
+        </div>
+        <div class="col-lg-7">
+          <div class="panel bg-white rounded-3 p-4">
+            <h2 class="h4 fw-bold mb-3">Daftar Produk</h2>
+            <div class="table-responsive">
+              <table class="table align-middle">
+                <thead>
+                  <tr>
+                    <th>Produk</th>
+                    <th>Kategori</th>
+                    <th>Harga</th>
+                    <th>Stok</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody data-dashboard-products></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+
+</html>

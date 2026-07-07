@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard UMKM - Laot Niaga</title>
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html"><img class="brand-logo" src="assets/img/lopgo laot niaga.png" alt="Laot Niaga"></a>
+      <a class="btn btn-outline-laot" href="niaga-ai.html">NiagaAI</a>
+    </div>
+  </nav>
+  <main class="page-shell">
+    <div class="container">
+      <div class="mb-4">
+        <span class="badge">Panel Kontrol UMKM</span>
+        <h1 class="section-title mt-3">Selamat datang, <span data-user-name>UMKM Laot Niaga</span></h1>
+      </div>
+      <div class="dashboard-grid mb-4">
+        <div class="stat p-4"><p class="text-muted mb-1">Produk</p><h2 data-count-products>0</h2></div>
+        <div class="stat p-4"><p class="text-muted mb-1">Item Terjual</p><h2 data-sold-items>0</h2></div>
+        <div class="stat p-4"><p class="text-muted mb-1">Omzet</p><h2 data-revenue>Rp0</h2></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-5">
+          <form class="panel p-4" data-product-form>
+            <h2>Tambah Produk</h2>
+            <input class="mb-3" name="name" placeholder="Nama produk" required>
+            <select class="mb-3" name="category" required>
+              <option value="">Pilih kategori</option>
+              <option>Ikan Olahan</option><option>Siap Santap</option><option>Camilan Laut</option>
+            </select>
+            <div class="row g-2">
+              <div class="col-6"><input class="mb-3" type="number" name="price" placeholder="Harga" required></div>
+              <div class="col-6"><input class="mb-3" type="number" name="stock" placeholder="Stok" required></div>
+            </div>
+            <input class="mb-3" name="unit" placeholder="Satuan, contoh: pack">
+            <input class="mb-3" name="origin" placeholder="Asal produk">
+            <textarea class="mb-3" name="description" rows="3" placeholder="Deskripsi produk"></textarea>
+            <input class="mb-3" type="file" name="image" accept="image/*">
+            <button class="btn btn-laot w-100">Simpan Produk</button>
+          </form>
+        </div>
+        <div class="col-lg-7">
+          <div class="panel p-4">
+            <h2>Daftar Produk</h2>
+            <div class="table-responsive">
+              <table class="table">
+                <thead><tr><th>Produk</th><th>Kategori</th><th>Harga</th><th>Stok</th><th>Status</th></tr></thead>
+                <tbody data-dashboard-products></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>

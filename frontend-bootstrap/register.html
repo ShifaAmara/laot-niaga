@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register - Laot Niaga</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body>
+  <main class="page-shell">
+    <div class="container">
+      <div class="mx-auto auth-box bg-white rounded-3 p-4" style="max-width: 620px;">
+        <a href="index.html"><img class="brand-logo mb-4" src="assets/img/logo biru.png" alt="Laot Niaga"></a>
+        <h1 class="h3 fw-bold">Daftar Akun</h1>
+        <form data-register-form>
+          <div class="row g-3">
+            <div class="col-md-6"><input class="form-control" name="name" placeholder="Nama lengkap" required></div>
+            <div class="col-md-6"><input class="form-control" type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="col-md-6"><input class="form-control" type="password" name="password" placeholder="Password"
+                required></div>
+            <div class="col-md-6">
+              <select class="form-select" name="role">
+                <option value="buyer">Pembeli</option>
+                <option value="umkm">UMKM / Nelayan</option>
+              </select>
+            </div>
+            <div class="col-md-6"><input class="form-control" name="store_name" placeholder="Nama toko jika UMKM"></div>
+            <div class="col-md-6"><input class="form-control" name="phone" placeholder="Nomor WhatsApp"></div>
+            <div class="col-12"><textarea class="form-control" name="address" rows="2" placeholder="Alamat"></textarea>
+            </div>
+            <div class="col-12"><textarea class="form-control" name="story" rows="3"
+                placeholder="Cerita singkat UMKM"></textarea></div>
+          </div>
+          <button class="btn btn-laot w-100 mt-3 mb-3">Daftar</button>
+          <a href="login.html">Sudah punya akun? Masuk</a>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+
+</html>

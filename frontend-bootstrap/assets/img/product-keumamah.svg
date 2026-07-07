@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" role="img" aria-label="Keumamah Premium">
+  <rect width="520" height="360" rx="28" fill="#e8f6f4"/>
+  <ellipse cx="260" cy="250" rx="180" ry="42" fill="#b9deda"/>
+  <rect x="155" y="105" width="210" height="170" rx="28" fill="#2E3263"/>
+  <rect x="184" y="136" width="152" height="92" rx="18" fill="#fff8d7"/>
+  <path d="M213 181c38-31 81-25 109 2-33 31-75 34-109-2Z" fill="#d88b42"/>
+  <circle cx="302" cy="181" r="5" fill="#2E3263"/>
+  <text x="196" y="254" fill="#FCD53B" font-family="Arial" font-size="22" font-weight="700">Keumamah</text>
+</svg>

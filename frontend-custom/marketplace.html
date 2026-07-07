@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marketplace - Laot Niaga</title>
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html"><img class="brand-logo" src="assets/img/logo.svg" alt="Laot Niaga"></a>
+      <div class="cluster"><a class="btn btn-outline-laot" href="login.html">Masuk</a><a class="btn btn-laot" href="register.html">Daftar</a></div>
+    </div>
+  </nav>
+  <main class="page-shell">
+    <div class="container">
+      <div class="row align-items-end mb-4">
+        <div class="col-lg-6">
+          <span class="badge">Marketplace</span>
+          <h1 class="section-title mt-3">Jelajah Produk Ikan & Olahan Laut</h1>
+          <p class="text-muted mb-0">Cari produk UMKM dengan informasi bahan, asal, stok, dan profil produsen yang jelas.</p>
+        </div>
+        <div class="col-lg-6 row g-2">
+          <div class="col-md-7"><input data-search placeholder="Cari keumamah, abon, kerupuk..."></div>
+          <div class="col-md-5">
+            <select data-category>
+              <option value="">Semua Kategori</option>
+              <option>Ikan Olahan</option>
+              <option>Siap Santap</option>
+              <option>Camilan Laut</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row" data-marketplace-grid></div>
+    </div>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>

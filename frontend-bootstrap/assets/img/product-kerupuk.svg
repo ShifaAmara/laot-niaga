@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" role="img" aria-label="Kerupuk Ikan">
+  <rect width="520" height="360" rx="28" fill="#eff6ff"/>
+  <circle cx="210" cy="198" r="72" fill="#fff"/>
+  <circle cx="300" cy="190" r="82" fill="#fff8d7"/>
+  <circle cx="250" cy="215" r="88" fill="#fff"/>
+  <path d="M200 178c40-28 85-22 118 1-31 30-78 36-118-1Z" fill="#2E3263"/>
+  <circle cx="297" cy="178" r="5" fill="#FCD53B"/>
+  <rect x="165" y="274" width="190" height="22" rx="11" fill="#FCD53B"/>
+</svg>

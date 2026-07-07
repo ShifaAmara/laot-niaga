@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register - Laot Niaga</title>
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+  <main class="page-shell">
+    <div class="container">
+      <div class="auth-box p-4 mx-auto" style="max-width: 620px;">
+        <a href="index.html"><img class="brand-logo mb-4" src="assets/img/logo.svg" alt="Laot Niaga"></a>
+        <h1>Daftar Akun</h1>
+        <form data-register-form>
+          <div class="row g-2">
+            <div class="col-md-6"><input class="mb-3" name="name" placeholder="Nama lengkap" required></div>
+            <div class="col-md-6"><input class="mb-3" type="email" name="email" placeholder="Email" required></div>
+            <div class="col-md-6"><input class="mb-3" type="password" name="password" placeholder="Password" required></div>
+            <div class="col-md-6">
+              <select class="mb-3" name="role">
+                <option value="buyer">Pembeli</option>
+                <option value="umkm">UMKM / Nelayan</option>
+              </select>
+            </div>
+            <div class="col-md-6"><input class="mb-3" name="store_name" placeholder="Nama toko jika UMKM"></div>
+            <div class="col-md-6"><input class="mb-3" name="phone" placeholder="Nomor WhatsApp"></div>
+            <div class="col-12"><textarea class="mb-3" name="address" rows="2" placeholder="Alamat"></textarea></div>
+            <div class="col-12"><textarea class="mb-3" name="story" rows="3" placeholder="Cerita singkat UMKM"></textarea></div>
+          </div>
+          <button class="btn btn-laot w-100 mb-3">Daftar</button>
+          <a href="login.html">Sudah punya akun? Masuk</a>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>

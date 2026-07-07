@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="Pasar digital hasil laut Aceh">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="0.5" stop-color="#dff5f0"/>
+      <stop offset="1" stop-color="#fff4bf"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" x2="1">
+      <stop offset="0" stop-color="#1d8fa1"/>
+      <stop offset="1" stop-color="#2E3263"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#sky)"/>
+  <circle cx="985" cy="128" r="70" fill="#FCD53B"/>
+  <path d="M0 420c150-52 275 42 420-8 176-61 285-37 430 14 135 47 242-23 350-3v297H0Z" fill="url(#sea)"/>
+  <path d="M0 520c150-35 270 20 420-8 165-31 280-19 430 15 135 31 238-10 350 5v188H0Z" fill="#246f86" opacity=".55"/>
+  <g transform="translate(156 230)">
+    <rect x="0" y="150" width="300" height="160" rx="22" fill="#fff" opacity=".94"/>
+    <rect x="22" y="174" width="112" height="88" rx="14" fill="#f7fbfa"/>
+    <path d="M48 216c25-22 55-18 75 2-22 23-51 25-75 2Z" fill="#2E3263"/>
+    <circle cx="108" cy="218" r="4" fill="#FCD53B"/>
+    <rect x="152" y="178" width="118" height="14" rx="7" fill="#2E3263"/>
+    <rect x="152" y="204" width="96" height="12" rx="6" fill="#84aeb5"/>
+    <rect x="152" y="232" width="84" height="26" rx="13" fill="#FCD53B"/>
+    <path d="M43 294h218" stroke="#e4eeee" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(560 190)">
+    <rect x="0" y="0" width="380" height="280" rx="26" fill="#fff" opacity=".95"/>
+    <rect x="26" y="28" width="328" height="60" rx="18" fill="#2E3263"/>
+    <text x="52" y="66" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#fff">NiagaAI</text>
+    <rect x="36" y="116" width="250" height="26" rx="13" fill="#eaf4f4"/>
+    <rect x="36" y="158" width="300" height="26" rx="13" fill="#eaf4f4"/>
+    <rect x="36" y="200" width="210" height="26" rx="13" fill="#FCD53B"/>
+  </g>
+  <path d="M210 610c60-35 120-35 180 0M720 600c70-45 145-40 220 4" stroke="#FCD53B" stroke-width="10" stroke-linecap="round" opacity=".72"/>
+</svg>
