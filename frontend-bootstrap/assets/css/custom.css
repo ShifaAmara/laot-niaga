@@ -603,7 +603,7 @@ background:#0f1645;
 
     background:#fff;
 
-    border-radius:16px;
+    border-radius:px;
 
     padding:15px 18px;
 
@@ -619,7 +619,7 @@ background:#0f1645;
 
     align-items:center;
 
-    gap:12px;
+    gap:1px;
 
 }
 
@@ -712,7 +712,6 @@ background:#0f1645;
 .product-rating i{
 
     color:#ffc107;
-
     font-size:24px;
 
 }
@@ -720,20 +719,10 @@ background:#0f1645;
 .product-price{
 
     display:inline-block;
-
-    background:#ececec;
-
-    padding:12px 22px;
-
     border-radius:999px;
-
-    font-size:46px;
-
-    font-weight:800;
-
+    font-size:25px;
+    font-weight:700;
     color:#16215c;
-
-    margin:20px 0;
 
 }
 

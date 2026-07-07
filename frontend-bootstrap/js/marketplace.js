@@ -279,20 +279,23 @@ ${product.origin}
 }
 function bindCard(){
 
-    document
-    .querySelectorAll(".btn-cart-icon")
-    .forEach(btn=>{
+document
 
-        btn.onclick=()=>{
+.querySelectorAll(".btn-cart")
 
-            const id=btn.dataset.id;
+.forEach(btn=>{
 
-            alert("Produk berhasil ditambahkan ke keranjang");
+btn.onclick=()=>{
 
-            // Nanti kita ganti ke cart.html
-        }
+const id=btn.dataset.id;
 
-    });
+location.href=
+
+`product-detail.html?id=${id}`;
+
+}
+
+});
 
 }
 
