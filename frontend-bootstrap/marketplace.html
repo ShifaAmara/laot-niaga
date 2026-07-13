@@ -1,384 +1,210 @@
 <!doctype html>
 <html lang="id">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Marketplace - Laot Niaga</title>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Jelajah semua produk UMKM hasil laut Aceh di Laot Niaga.">
+  <title>Marketplace — Laot Niaga</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/custom.css">
-  <style>
-    :root {
-      --laot-navy: #16215c;
-      --laot-navy-dark: #0d1440;
-      --laot-gold-1: #ffd24d;
-      --laot-gold-2: #f5a300;
-      --laot-bg-soft-1: #eef1fc;
-      --laot-bg-soft-2: #e2e7fb;
-      --laot-text-muted: #7b8091;
-      --laot-line: #eef0f5;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--laot-navy);
-      background: #fff;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .font-display {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    /* ---------- Navbar ---------- */
-    .navbar {
-      padding-top: .5rem;
-      padding-bottom: 1rem;
-    }
-
-    .brand-logo {
-      height: 50px;
-      width: auto;
-      max-width: none;
-      object-fit: contain;
-    }
-
-    .icon-btn {
-      width: 42px;
-      height: 42px;
-      border: 1.5px solid var(--laot-navy);
-      color: var(--laot-navy);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: .15s ease;
-    }
-
-    .icon-btn:hover {
-      background: var(--laot-navy);
-      color: #fff;
-    }
-
-    .search-pill {
-      background: var(--laot-bg-soft-1);
-      border: none;
-      border-radius: 999px;
-      padding: .65rem 1.25rem .65rem 1rem;
-      min-width: 280px;
-    }
-
-    .search-pill input {
-      border: none;
-      background: transparent;
-      outline: none;
-      font-size: .95rem;
-      width: 100%;
-    }
-
-    .search-pill i {
-      color: var(--laot-text-muted);
-    }
-
-    .btn-filter-pill {
-      border: 1.5px solid var(--laot-navy);
-      color: var(--laot-navy);
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: .9rem;
-      padding: .55rem 1.3rem;
-      background: #fff;
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      transition: .15s ease;
-    }
-
-    .btn-filter-pill:hover {
-      background: var(--laot-navy);
-      color: #fff;
-    }
-
-    /* ---------- Hero / category strip ---------- */
-    .hero-band {
-      background: linear-gradient(180deg, var(--laot-bg-soft-1) 0%, var(--laot-bg-soft-2) 100%);
-      border-radius: 28px;
-      padding: 1.5rem 1.5rem 2rem;
-    }
-
-    .cat-scroll {
-      display: flex;
-      gap: .6rem;
-      overflow-x: auto;
-      padding-bottom: .25rem;
-      scrollbar-width: none;
-    }
-
-    .cat-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .cat-pill {
-      flex: 0 0 auto;
-      border: none;
-      background: #ffffffb0;
-      color: var(--laot-navy);
-      font-weight: 600;
-      font-size: .9rem;
-      padding: .6rem 1.35rem;
-      border-radius: 999px;
-      white-space: nowrap;
-      transition: .15s ease;
-    }
-
-    .cat-pill:hover {
-      background: #ffffff;
-    }
-
-    .cat-pill.active {
-      background: linear-gradient(135deg, var(--laot-gold-1), var(--laot-gold-2));
-      color: var(--laot-navy-dark);
-      box-shadow: 0 6px 14px rgba(245, 163, 0, .35);
-    }
-
-    /* ---------- Product cards ---------- */
-    .card-product {
-      border: none;
-      background: transparent;
-      padding: 8px;
-      transition: .3s;
-    }
-
-    .card-product:hover {
-      transform: translateY(-8px);
-    }
-
-    .img-wrapper {
-      border-radius: var(--radius-md);
-      aspect-ratio: 4/3.1;
-      overflow: hidden;
-      background: #f2f3f8;
-    }
-
-    .img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .35s ease;
-    }
-
-    .card-product:hover .img-wrapper img {
-      transform: scale(1.06);
-    }
-
-    .store-badge {
-      background: var(--laot-bg-soft-1);
-      color: var(--laot-navy);
-      font-size: .72rem;
-      font-weight: 600;
-      border-radius: 999px;
-      padding: .2rem .55rem;
-      display: inline-flex;
-      align-items: center;
-      gap: .25rem;
-    }
-
-    .store-badge i {
-      color: var(--laot-gold-2);
-    }
-
-    .product-title {
-      font-size: 1.5rem;
-      line-height: 1;
-      min-height: 1em;
-      font-weight: bold;
-    }
-
-    .product-location {
-      font-size: .8rem;
-    }
-
-    .product-price {
-
-      font-size: 28px;
-
-      font-weight: 800;
-
-      color: #16215c;
-
-    }
-
-    .product-price small {
-      font-weight: 500;
-      font-size: .72rem;
-    }
-
-    .btn-cart {
-      background: var(--laot-navy);
-      color: #fff;
-      font-weight: 600;
-      font-size: .85rem;
-      border: none;
-      border-radius: 12px;
-      padding: .6rem;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      transition: .15s ease;
-    }
-
-    .btn-cart:hover {
-      background: var(--laot-navy-dark);
-      color: #fff;
-    }
-
-    .btn-cart i {
-      font-size: 1.05rem;
-    }
-
-    .empty-state {
-      display: none;
-      text-align: center;
-      padding: 4rem 1rem;
-      color: var(--laot-text-muted);
-    }
-
-    @media (max-width:576px) {
-      .search-pill {
-        min-width: 0;
-        width: 100%;
-      }
-    }
-  </style>
 </head>
+<body>
+<div class="noise-bg"></div><div class="noise-layer" id="noiseLayer"></div>
 
-<body class="bg-white">
-  <nav class="navbar navbar-expand-lg bg-white sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img class="brand-logo" src="assets/img/logo biru.png" alt="Laot Niaga">
-      </a>
-      <div class="d-none d-md-flex align-items-center search-pill mx-auto">
-        <i class="bi bi-search me-2"></i>
-        <input type="text" data-search placeholder="cari keumamah, terasi, kerupuk...">
+<!-- NAVBAR -->
+<nav class="ln-navbar">
+  <div class="container"><div class="d-flex align-items-center gap-3 py-2">
+    <a href="index.html" class="flex-shrink-0"><img class="brand-logo" src="assets/img/logo biru.png" alt="Laot Niaga"></a>
+    <div class="nav-search flex-grow-1" style="max-width:480px">
+      <i class="bi bi-search"></i>
+      <input id="searchInput" type="text" placeholder="Cari produk...">
+    </div>
+    <div class="d-flex align-items-center gap-2 ms-auto">
+      <button class="theme-toggle"></button>
+      <a href="cart.html" class="icon-btn"><i class="bi bi-basket2"></i><span class="badge-dot" data-cart-count style="display:none"></span></a>
+      <span data-show-guest><a href="login.html" class="btn btn-outline-navy btn-sm px-3 d-none d-sm-inline-flex">Masuk</a></span>
+      <div class="dropdown" data-show-auth style="display:none">
+        <button class="icon-btn" data-bs-toggle="dropdown"><i class="bi bi-person-circle"></i></button>
+        <ul class="dropdown-menu dropdown-menu-end shadow" style="background:var(--glass-strong);border:1px solid var(--glass-border)!important;backdrop-filter:var(--glass-blur)">
+          <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person me-2"></i>Profil</a></li>
+          <li><a class="dropdown-item" href="orders.html"><i class="bi bi-bag me-2"></i>Pesanan</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="#" onclick="logout()"><i class="bi bi-box-arrow-right me-2"></i>Keluar</a></li>
+        </ul>
+      </div>
+    </div>
+  </div></div>
+</nav>
+
+<main class="page-shell py-4">
+  <div class="container">
+    <!-- Breadcrumb -->
+    <div class="ln-breadcrumb mb-4 reveal"><a href="index.html">Beranda</a><span class="sep">/</span><span>Marketplace</span></div>
+
+    <div class="row g-4">
+      <!-- Sidebar Filter -->
+      <div class="col-lg-3 d-none d-lg-block">
+        <div class="panel p-4 sticky-top" style="top:80px">
+          <h6 class="fw-800 mb-3">Filter Produk</h6>
+          <!-- Kategori -->
+          <div class="mb-4">
+            <div class="fw-700 small mb-2" style="color:var(--text-muted)">KATEGORI</div>
+            <div class="d-flex flex-column gap-1" id="catFilter">
+              <label class="d-flex align-items-center gap-2 py-1" style="cursor:pointer;font-size:.88rem"><input type="radio" name="cat" value="" checked class="form-check-input mt-0"> Semua</label>
+              <label class="d-flex align-items-center gap-2 py-1" style="cursor:pointer;font-size:.88rem"><input type="radio" name="cat" value="Ikan Olahan" class="form-check-input mt-0"> 🐟 Ikan Olahan</label>
+              <label class="d-flex align-items-center gap-2 py-1" style="cursor:pointer;font-size:.88rem"><input type="radio" name="cat" value="Siap Santap" class="form-check-input mt-0"> 🍽️ Siap Santap</label>
+              <label class="d-flex align-items-center gap-2 py-1" style="cursor:pointer;font-size:.88rem"><input type="radio" name="cat" value="Camilan Laut" class="form-check-input mt-0"> 🦐 Camilan Laut</label>
+              <label class="d-flex align-items-center gap-2 py-1" style="cursor:pointer;font-size:.88rem"><input type="radio" name="cat" value="Bumbu Laut" class="form-check-input mt-0"> 🌶️ Bumbu Laut</label>
+            </div>
+          </div>
+          <!-- Harga -->
+          <div class="mb-4">
+            <div class="fw-700 small mb-2" style="color:var(--text-muted)">HARGA</div>
+            <input type="range" class="form-range" id="priceRange" min="0" max="200000" step="5000" value="200000">
+            <div class="d-flex justify-content-between small" style="color:var(--text-muted)"><span>Rp0</span><span id="priceVal">Rp200rb+</span></div>
+          </div>
+          <!-- Rating -->
+          <div>
+            <div class="fw-700 small mb-2" style="color:var(--text-muted)">RATING MINIMUM</div>
+            <div class="d-flex flex-column gap-1">
+              <label class="d-flex align-items-center gap-2 py-1" style="cursor:pointer;font-size:.88rem"><input type="radio" name="rating" value="0" checked class="form-check-input mt-0"> Semua Rating</label>
+              <label class="d-flex align-items-center gap-2 py-1" style="cursor:pointer;font-size:.88rem"><input type="radio" name="rating" value="4" class="form-check-input mt-0"> <span class="star">★★★★</span>+</label>
+              <label class="d-flex align-items-center gap-2 py-1" style="cursor:pointer;font-size:.88rem"><input type="radio" name="rating" value="4.5" class="form-check-input mt-0"> <span class="star">★★★★½</span>+</label>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="ms-auto d-flex align-items-center gap-2">
-        <button class="btn-filter-pill" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterPanel">
-          <i class="bi bi-sliders"></i> Filter
+      <!-- Main Content -->
+      <div class="col-lg-9">
+        <!-- Sort + Result Info -->
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2 reveal">
+          <span id="resultInfo" style="font-size:.88rem;color:var(--text-muted)">Memuat produk...</span>
+          <div class="d-flex gap-2 align-items-center">
+            <span style="font-size:.82rem;color:var(--text-muted)">Urutkan:</span>
+            <select class="form-select form-select-sm" id="sortSel" style="width:auto;font-size:.82rem">
+              <option value="default">Relevan</option>
+              <option value="price-asc">Harga ↑</option>
+              <option value="price-desc">Harga ↓</option>
+              <option value="rating">Rating</option>
+              <option value="sold">Terlaris</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Category Tabs (mobile) -->
+        <div class="cat-scroll mb-3 d-lg-none reveal">
+          <button class="cat-chip active" data-cat="">Semua</button>
+          <button class="cat-chip" data-cat="Ikan Olahan">🐟 Ikan Olahan</button>
+          <button class="cat-chip" data-cat="Siap Santap">🍽️ Siap Santap</button>
+          <button class="cat-chip" data-cat="Camilan Laut">🦐 Camilan Laut</button>
+          <button class="cat-chip" data-cat="Bumbu Laut">🌶️ Bumbu</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="row row-cols-2 row-cols-md-3 g-3" id="productGrid">
+          <!-- Skeleton -->
+          ${[...Array(6)].fill(0).map(()=>`<div class="col"><div class="product-card"><div class="img-wrapper"><div class="skeleton w-100" style="aspect-ratio:4/3"></div></div><div class="card-body"><div class="skeleton w-75 mb-2" style="height:16px"></div><div class="skeleton w-50" style="height:14px"></div><div class="skeleton w-60 mt-2" style="height:20px"></div></div></div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="ln-footer py-4 mt-5">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+    <span class="footer-brand">🌊 Laot Niaga</span>
+    <div class="d-flex gap-3"><a href="index.html">Beranda</a><a href="niaga-ai.html">NiagaAI</a></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script><script src="js/cart.js"></script><script src="js/theme.js"></script><script src="js/ai-assistant.js"></script>
+<script>
+let allProducts = [], filtered = [];
+let currentCat = '', currentSearch = '', currentSort = 'default', currentRating = 0, maxPrice = 200000;
+
+// Read URL params
+const params = new URLSearchParams(location.search);
+if (params.get('cat')) currentCat = params.get('cat').replace(/-/g,' ');
+if (params.get('search')) { currentSearch = params.get('search'); document.getElementById('searchInput').value = currentSearch; }
+
+function productCard(p) {
+  const disc = p.original_price ? Math.round((1-p.price/p.original_price)*100) : 0;
+  return `<div class="col reveal">
+    <div class="product-card">
+      ${disc>0?`<div class="badge-discount">-${disc}%</div>`:''}
+      <button class="wishlist-btn ${isWishlisted(p.id)?'active':''}" onclick="event.stopPropagation();var a=toggleWishlist({id:${p.id},name:'${p.name.replace(/'/g,"\\'")}',image:'${productImage(p)}'});this.classList.toggle('active',a);this.querySelector('i').className='bi bi-heart'+(a?'-fill':'')">
+        <i class="bi bi-heart${isWishlisted(p.id)?'-fill':''}"></i>
+      </button>
+      <div class="img-wrapper"><a href="product-detail.html?id=${p.id}">
+        <img class="card-img-top" src="${productImage(p)}" alt="${p.name}" loading="lazy">
+      </a></div>
+      <div class="card-body">
+        <div class="product-store">🏪 ${p.store_name}</div>
+        <a href="product-detail.html?id=${p.id}" class="product-name d-block">${p.name}</a>
+        <div class="product-location"><i class="bi bi-geo-alt me-1"></i>${p.origin}</div>
+        <div class="d-flex align-items-center gap-1 mt-1"><span class="star">★</span><span style="font-size:.72rem;color:var(--text-muted)">${p.rating} (${p.sold})</span></div>
+        <div class="product-price mt-1">${rupiah(p.price)}<span style="font-size:.7rem;color:var(--text-muted);font-weight:500"> /${p.unit}</span></div>
+        <button class="btn-addcart" onclick="addToCart({id:${p.id},name:'${p.name.replace(/'/g,"\\'")}',price:${p.price},unit:'${p.unit}',image:'${productImage(p)}'})">
+          <i class="bi bi-cart-plus me-1"></i>Keranjang
         </button>
-        <a href="cart.html" class="icon-btn"><i class="bi bi-basket2"></i></a>
-        <a href="login.html" class="icon-btn"><i class="bi bi-person"></i></a>
-        <a href="niaga-ai.html" class="btn-ai">
-          <i class="bi bi-stars"></i>
-          NiagaAI
-        </a>
       </div>
     </div>
-  </nav>
+  </div>`;
+}
 
-  <main class="py-4">
-    <div class="container">
+function applyFilters() {
+  filtered = allProducts.filter(p => {
+    const catOk = !currentCat || (p.category||'').toLowerCase().includes(currentCat.toLowerCase());
+    const searchOk = !currentSearch || (p.name+p.description+p.store_name).toLowerCase().includes(currentSearch.toLowerCase());
+    const priceOk = p.price <= maxPrice;
+    const ratingOk = (p.rating||0) >= currentRating;
+    return catOk && searchOk && priceOk && ratingOk;
+  });
+  if (currentSort==='price-asc') filtered.sort((a,b)=>a.price-b.price);
+  else if (currentSort==='price-desc') filtered.sort((a,b)=>b.price-a.price);
+  else if (currentSort==='rating') filtered.sort((a,b)=>(b.rating||0)-(a.rating||0));
+  else if (currentSort==='sold') filtered.sort((a,b)=>(b.sold||0)-(a.sold||0));
+  render();
+}
 
-      <div class="d-md-none mb-3">
-        <div class="d-flex align-items-center search-pill w-100">
-          <i class="bi bi-search me-2"></i>
-          <input type="text" data-search placeholder="cari keumamah, terasi, kerupuk...">
-        </div>
-      </div>
+function render() {
+  const grid = document.getElementById('productGrid');
+  const info = document.getElementById('resultInfo');
+  if (!grid) return;
+  info.textContent = `Menampilkan ${filtered.length} produk`;
+  if (filtered.length===0) {
+    grid.innerHTML = `<div class="col-12 text-center py-5"><div style="font-size:3rem">🔍</div><h5 class="mt-3">Produk tidak ditemukan</h5><p style="color:var(--text-muted)">Coba kata kunci lain atau ubah filter</p></div>`;
+    return;
+  }
+  grid.innerHTML = filtered.map(productCard).join('');
+  setTimeout(() => grid.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')), 50);
+}
 
-      <div class="hero-band mb-4">
-        <div class="cat-scroll" data-category-nav>
-          <button class="cat-pill" data-category="ikan-asin">Ikan Asin</button>
-          <button class="cat-pill" data-category="terasi">Terasi</button>
-          <button class="cat-pill" data-category="kerupuk">Kerupuk</button>
-          <button class="cat-pill" data-category="bakso-ikan">Bakso Ikan</button>
-          <button class="cat-pill" data-category="abon">Abon</button>
-          <button class="cat-pill" data-category="cumi">Cumi</button>
-          <button class="cat-pill active" data-category="">Semua</button>
-          <button class="cat-pill add-category-btn" id="addCategoryBtn">
-            <i class="bi bi-plus-lg"></i>
-          </button>
-        </div>
-      </div>
+document.getElementById('searchInput')?.addEventListener('input', e => { currentSearch=e.target.value; applyFilters(); });
+document.getElementById('sortSel')?.addEventListener('change', e => { currentSort=e.target.value; applyFilters(); });
+document.querySelectorAll('input[name="cat"]').forEach(r => r.addEventListener('change', e => { currentCat=e.target.value; applyFilters(); }));
+document.querySelectorAll('input[name="rating"]').forEach(r => r.addEventListener('change', e => { currentRating=parseFloat(e.target.value); applyFilters(); }));
+document.getElementById('priceRange')?.addEventListener('input', e => {
+  maxPrice=parseInt(e.target.value);
+  document.getElementById('priceVal').textContent = maxPrice>=200000?'Rp200rb+':'Rp'+Math.round(maxPrice/1000)+'rb';
+  applyFilters();
+});
+document.querySelectorAll('.cat-chip').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.cat-chip').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); currentCat=b.dataset.cat; applyFilters();
+}));
 
-      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4" data-marketplace-grid>
-      </div>
-
-
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-      <script src="js/api.js"></script>
-      <script src="js/marketplace.js"></script>
-      <div class="modal fade" id="categoryModal" tabindex="-1">
-
-    <div class="modal-dialog">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-
-                <h5 class="modal-title">
-
-                    Tambah Kategori
-
-                </h5>
-
-                <button
-                    class="btn-close"
-                    data-bs-dismiss="modal">
-                </button>
-
-            </div>
-
-            <div class="modal-body">
-
-                <input
-                    id="newCategory"
-                    class="form-control"
-                    placeholder="Nama kategori">
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal">
-
-                    Batal
-
-                </button>
-
-                <button
-                    id="saveCategory"
-                    class="btn btn-primary">
-
-                    Simpan
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-</body>
-
-</html>
+async function init() {
+  allProducts = await getProducts();
+  if (currentCat) { document.querySelectorAll('.cat-chip, input[name="cat"]').forEach(el => {
+    if ((el.dataset.cat||el.value||'').toLowerCase()===currentCat.toLowerCase()) { el.classList?.add('active'); if(el.type==='radio') el.checked=true; }
+    else { el.classList?.remove('active'); }
+  }); }
+  applyFilters();
+}
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body></html>

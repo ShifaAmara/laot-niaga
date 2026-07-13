@@ -3,38 +3,69 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NiagaAI - Laot Niaga</title>
+  <meta name="description" content="NiagaAI — Asisten branding AI untuk UMKM hasil laut Aceh di Laot Niaga.">
+  <title>NiagaAI — Laot Niaga</title>
   <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
+  <!-- Animated Background -->
+  <div class="bg-gradient-orbs"></div>
+  <div class="bg-orb-gold"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="container nav-inner">
       <a href="index.html"><img class="brand-logo" src="assets/img/logo.svg" alt="Laot Niaga"></a>
-      <a class="btn btn-outline-laot" href="dashboard-umkm.html">Dashboard</a>
+      <div class="nav-links">
+        <a href="marketplace.html">Marketplace</a>
+        <a href="niaga-ai.html" class="active">NiagaAI</a>
+        <a href="dashboard-umkm.html">Dashboard</a>
+        <div data-nav-auth>
+          <a class="btn btn-outline btn-sm" href="login.html">Masuk</a>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+
   <main class="page-shell">
-    <div class="container row">
-      <div class="col-lg-5">
-        <span class="badge">NiagaAI</span>
-        <h1 class="section-title mt-3">Asisten Branding Produk Laut</h1>
-        <p class="text-muted">Masukkan informasi produk, lalu NiagaAI membuat ide nama merek, slogan, deskripsi produk, dan profil UMKM.</p>
-        <form class="panel p-4" data-ai-form>
-          <input class="mb-3" name="product_name" placeholder="Nama produk" required>
-          <input class="mb-3" name="category" placeholder="Kategori">
-          <input class="mb-3" name="origin" placeholder="Asal produk">
-          <textarea class="mb-3" name="unique_value" rows="3" placeholder="Keunggulan produk"></textarea>
-          <button class="btn btn-laot w-100">Buat Rekomendasi</button>
-        </form>
-      </div>
-      <div class="col-lg-7">
-        <div class="chat-window panel p-4" data-ai-chat>
-          <div class="chat-bubble mb-3">Masukkan produk UMKM kamu di form sebelah.</div>
-          <div class="chat-bubble ai mb-3">Saya siap membantu membuat branding yang lebih meyakinkan.</div>
+    <div class="container">
+      <div class="row">
+        <!-- Left: Form -->
+        <div class="col-5">
+          <span class="badge badge-rose reveal">🤖 NiagaAI</span>
+          <h1 class="section-title mt-3 reveal">Asisten Branding <span class="text-gradient">Produk Laut</span></h1>
+          <p class="lead mb-4 reveal">Masukkan informasi produk, lalu NiagaAI membuat ide nama merek, slogan, deskripsi produk, dan profil UMKM.</p>
+          <form class="panel reveal" data-ai-form>
+            <input class="mb-3" name="product_name" placeholder="🐟 Nama produk" required>
+            <input class="mb-3" name="category" placeholder="📂 Kategori">
+            <input class="mb-3" name="origin" placeholder="📍 Asal produk">
+            <textarea class="mb-3" name="unique_value" rows="3" placeholder="⭐ Keunggulan produk"></textarea>
+            <button class="btn btn-primary w-100 btn-lg">✨ Buat Rekomendasi</button>
+          </form>
+        </div>
+
+        <!-- Right: Chat -->
+        <div class="col-7">
+          <div class="panel reveal" style="padding:0;overflow:hidden">
+            <div class="d-flex items-center gap-2 p-4" style="border-bottom:1px solid var(--glass-border)">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);animation:glowPulse 2s infinite"></div>
+              <span class="fw-bold small">NiagaAI Chat</span>
+              <span class="badge badge-success" style="margin-left:auto;font-size:0.7rem">Online</span>
+            </div>
+            <div class="chat-window" data-ai-chat>
+              <div class="chat-bubble">Masukkan produk UMKM kamu di form sebelah. 🐟</div>
+              <div class="chat-bubble ai">Saya siap membantu membuat branding yang lebih meyakinkan! ✨</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
+
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -3,19 +3,41 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Profil UMKM - Laot Niaga</title>
+  <meta name="description" content="Profil UMKM — Lihat toko dan produk UMKM hasil laut Aceh di Laot Niaga.">
+  <title>Profil UMKM — Laot Niaga</title>
   <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
+  <!-- Animated Background -->
+  <div class="bg-gradient-orbs"></div>
+  <div class="bg-orb-gold"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="container nav-inner">
       <a href="index.html"><img class="brand-logo" src="assets/img/logo.svg" alt="Laot Niaga"></a>
-      <a class="btn btn-outline-laot" href="marketplace.html">Marketplace</a>
+      <div class="nav-links">
+        <a href="marketplace.html">Marketplace</a>
+        <a href="niaga-ai.html">NiagaAI</a>
+        <a href="dashboard-umkm.html">Dashboard</a>
+        <div data-nav-auth>
+          <a class="btn btn-outline btn-sm" href="login.html">Masuk</a>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+
   <main class="page-shell">
-    <div class="container" data-seller-profile></div>
+    <div class="container">
+      <a class="btn btn-ghost mb-4" href="marketplace.html">← Kembali ke Marketplace</a>
+      <div data-seller-profile></div>
+    </div>
   </main>
+
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>404 — Halaman Tidak Ditemukan | Laot Niaga</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <style>
+    .e404-wrap { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px 16px; position:relative; z-index:2; }
+    .e404-num { font-size:clamp(6rem,20vw,12rem); font-weight:900; line-height:1; background:linear-gradient(135deg,var(--navy),var(--ocean),var(--yellow)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .wave-anim { animation:waveBob 3s ease-in-out infinite; display:inline-block; font-size:4rem; }
+    @keyframes waveBob { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-16px) rotate(5deg)} }
+  </style>
+</head>
+<body>
+<div class="noise-bg"></div><div class="noise-layer" id="noiseLayer"></div>
+
+<nav class="ln-navbar">
+  <div class="container"><div class="d-flex align-items-center gap-3 py-2">
+    <a href="index.html"><img class="brand-logo" src="assets/img/logo biru.png" alt="Laot Niaga"></a>
+    <div class="ms-auto"><button class="theme-toggle"></button></div>
+  </div></div>
+</nav>
+
+<div class="e404-wrap">
+  <div class="wave-anim mb-3">🌊</div>
+  <div class="e404-num">404</div>
+  <h2 class="fw-800 mt-3 mb-2">Halaman Tidak Ditemukan</h2>
+  <p style="color:var(--text-muted);max-width:400px;line-height:1.7" class="mb-4">
+    Sepertinya halaman yang kamu cari sudah hanyut dibawa ombak.<br>
+    Tenang, masih banyak produk laut segar menunggumu!
+  </p>
+  <div class="d-flex gap-3 flex-wrap justify-content-center">
+    <a href="index.html" class="btn btn-navy px-4 fw-700"><i class="bi bi-house me-2"></i>Beranda</a>
+    <a href="marketplace.html" class="btn btn-laot px-4 fw-700">🐟 Marketplace</a>
+    <button onclick="history.back()" class="btn btn-ghost px-4"><i class="bi bi-arrow-left me-2"></i>Kembali</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script><script src="js/theme.js"></script>
+</body></html>

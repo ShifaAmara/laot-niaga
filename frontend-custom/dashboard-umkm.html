@@ -3,53 +3,98 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard UMKM - Laot Niaga</title>
+  <meta name="description" content="Dashboard UMKM — Kelola produk dan lihat statistik penjualan di Laot Niaga.">
+  <title>Dashboard UMKM — Laot Niaga</title>
   <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
+  <!-- Animated Background -->
+  <div class="bg-gradient-orbs"></div>
+  <div class="bg-orb-gold"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="container nav-inner">
-      <a href="index.html"><img class="brand-logo" src="assets/img/lopgo laot niaga.png" alt="Laot Niaga"></a>
-      <a class="btn btn-outline-laot" href="niaga-ai.html">NiagaAI</a>
+      <a href="index.html"><img class="brand-logo" src="assets/img/logo.svg" alt="Laot Niaga"></a>
+      <div class="nav-links">
+        <a href="marketplace.html">Marketplace</a>
+        <a href="niaga-ai.html">NiagaAI</a>
+        <a href="dashboard-umkm.html" class="active">Dashboard</a>
+        <div data-nav-auth>
+          <a class="btn btn-outline btn-sm" href="login.html">Masuk</a>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+
   <main class="page-shell">
     <div class="container">
-      <div class="mb-4">
-        <span class="badge">Panel Kontrol UMKM</span>
-        <h1 class="section-title mt-3">Selamat datang, <span data-user-name>UMKM Laot Niaga</span></h1>
+      <!-- Header -->
+      <div class="mb-5 reveal">
+        <span class="badge badge-gold">⚙️ Panel Kontrol UMKM</span>
+        <h1 class="section-title mt-3">Selamat datang, <span class="text-gradient" data-user-name>UMKM Laot Niaga</span></h1>
       </div>
-      <div class="dashboard-grid mb-4">
-        <div class="stat p-4"><p class="text-muted mb-1">Produk</p><h2 data-count-products>0</h2></div>
-        <div class="stat p-4"><p class="text-muted mb-1">Item Terjual</p><h2 data-sold-items>0</h2></div>
-        <div class="stat p-4"><p class="text-muted mb-1">Omzet</p><h2 data-revenue>Rp0</h2></div>
+
+      <!-- Stats Cards -->
+      <div class="dashboard-grid mb-5">
+        <div class="glass stat-card reveal">
+          <div class="stat-icon">📦</div>
+          <p class="small text-muted mb-1">Produk</p>
+          <h2 data-count-products data-counter="0" data-counter-type="number">0</h2>
+        </div>
+        <div class="glass stat-card reveal reveal-delay-1">
+          <div class="stat-icon">🛒</div>
+          <p class="small text-muted mb-1">Item Terjual</p>
+          <h2 data-sold-items data-counter="0" data-counter-type="number">0</h2>
+        </div>
+        <div class="glass stat-card reveal reveal-delay-2">
+          <div class="stat-icon">💰</div>
+          <p class="small text-muted mb-1">Omzet</p>
+          <h2 data-revenue data-counter="0" data-counter-type="rupiah">Rp0</h2>
+        </div>
       </div>
+
+      <!-- Form + Table -->
       <div class="row">
-        <div class="col-lg-5">
-          <form class="panel p-4" data-product-form>
-            <h2>Tambah Produk</h2>
+        <div class="col-5">
+          <form class="panel reveal" data-product-form>
+            <h2>✨ Tambah Produk</h2>
             <input class="mb-3" name="name" placeholder="Nama produk" required>
             <select class="mb-3" name="category" required>
               <option value="">Pilih kategori</option>
-              <option>Ikan Olahan</option><option>Siap Santap</option><option>Camilan Laut</option>
+              <option>Ikan Olahan</option>
+              <option>Siap Santap</option>
+              <option>Camilan Laut</option>
             </select>
             <div class="row g-2">
-              <div class="col-6"><input class="mb-3" type="number" name="price" placeholder="Harga" required></div>
+              <div class="col-6"><input class="mb-3" type="number" name="price" placeholder="Harga (Rp)" required></div>
               <div class="col-6"><input class="mb-3" type="number" name="stock" placeholder="Stok" required></div>
             </div>
             <input class="mb-3" name="unit" placeholder="Satuan, contoh: pack">
             <input class="mb-3" name="origin" placeholder="Asal produk">
             <textarea class="mb-3" name="description" rows="3" placeholder="Deskripsi produk"></textarea>
             <input class="mb-3" type="file" name="image" accept="image/*">
-            <button class="btn btn-laot w-100">Simpan Produk</button>
+            <button class="btn btn-primary w-100">Simpan Produk</button>
           </form>
         </div>
-        <div class="col-lg-7">
-          <div class="panel p-4">
-            <h2>Daftar Produk</h2>
+        <div class="col-7">
+          <div class="panel reveal">
+            <h2>📋 Daftar Produk</h2>
             <div class="table-responsive">
               <table class="table">
-                <thead><tr><th>Produk</th><th>Kategori</th><th>Harga</th><th>Stok</th><th>Status</th></tr></thead>
+                <thead>
+                  <tr>
+                    <th>Produk</th>
+                    <th>Kategori</th>
+                    <th>Harga</th>
+                    <th>Stok</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
                 <tbody data-dashboard-products></tbody>
               </table>
             </div>
@@ -58,6 +103,7 @@
       </div>
     </div>
   </main>
+
   <script src="js/main.js"></script>
 </body>
 </html>

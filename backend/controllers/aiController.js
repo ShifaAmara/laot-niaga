@@ -26,9 +26,9 @@ exports.generateBranding = async (req, res) => {
     const payload = req.body || {};
     let result;
 
-    if (process.env.GEMINI_KEY) {
+    if (process.env.GEMINI_API_KEY) {
       const { GoogleGenerativeAI } = require("@google/generative-ai");
-      const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
+      const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
       const prompt = `
 Anda adalah NiagaAI untuk marketplace Laot Niaga, platform UMKM olahan hasil laut Aceh.
@@ -52,7 +52,7 @@ Gunakan bahasa Indonesia yang hangat, profesional, dan cocok untuk etalase toko 
       [req.user?.id || null, JSON.stringify(payload), JSON.stringify(result)]
     );
 
-    return res.json({ result, source: process.env.GEMINI_KEY ? "gemini" : "fallback" });
+    return res.json({ result, source: process.env.GEMINI_API_KEY? "gemini" : "fallback" });
   } catch (error) {
     return res.status(500).json({
       message: "NiagaAI gagal membuat rekomendasi.",

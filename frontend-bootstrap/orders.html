@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pesanan Saya — Laot Niaga</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+<div class="noise-bg"></div><div class="noise-layer" id="noiseLayer"></div>
+<nav class="ln-navbar">
+  <div class="container"><div class="d-flex align-items-center gap-3 py-2">
+    <a href="index.html"><img class="brand-logo" src="assets/img/logo biru.png" alt="Laot Niaga"></a>
+    <span class="fw-800 ms-2">Pesanan Saya</span>
+    <div class="ms-auto d-flex gap-2"><button class="theme-toggle"></button>
+      <a href="marketplace.html" class="btn btn-laot btn-sm px-3">🐟 Belanja Lagi</a>
+    </div>
+  </div></div>
+</nav>
+
+<main class="page-shell py-5">
+  <div class="container" style="max-width:800px">
+    <!-- Filter Tabs -->
+    <div class="cat-scroll mb-4 reveal">
+      <button class="cat-chip active" data-status="">Semua</button>
+      <button class="cat-chip" data-status="process">⚙️ Diproses</button>
+      <button class="cat-chip" data-status="ship">🚚 Dikirim</button>
+      <button class="cat-chip" data-status="done">✅ Selesai</button>
+    </div>
+    <div id="orderList"></div>
+  </div>
+</main>
+
+<footer class="ln-footer py-4 mt-5">
+  <div class="container d-flex justify-content-between"><span class="footer-brand">🌊 Laot Niaga</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script><script src="js/cart.js"></script><script src="js/theme.js"></script><script src="js/ai-assistant.js"></script>
+<script>
+let allOrders = [], currentFilter = '';
+const statusMap = { process:'⚙️ Diproses', ship:'🚚 Dikirim', done:'✅ Selesai', new:'🆕 Baru' };
+const badgeMap = { process:'badge-status-process', ship:'badge-status-ship', done:'badge-status-done', new:'badge-status-new' };
+
+function orderCard(o) {
+  const items = (o.items||[]).map(i=>`<div class="d-flex gap-2 align-items-center"><img src="assets/img/keumamah.jpg" style="width:40px;height:40px;border-radius:8px;object-fit:cover"><div class="small"><div class="fw-600">${i.name}</div><div style="color:var(--text-muted)">x${i.qty} · ${rupiah(i.price)}</div></div></div>`).join('');
+  return `<div class="order-card mb-3">
+    <div class="d-flex justify-content-between align-items-start mb-3">
+      <div><div class="fw-800">#${o.id}</div><div style="font-size:.8rem;color:var(--text-muted)">${o.date||'2024-11-20'}</div></div>
+      <span class="badge rounded-pill ${badgeMap[o.status]||'badge-laot'} fs-7">${statusMap[o.status]||o.status}</span>
+    </div>
+    <div class="d-flex flex-column gap-2 mb-3">${items}</div>
+    <div class="d-flex justify-content-between align-items-center pt-3" style="border-top:1px solid var(--line)">
+      <div class="fw-800" style="color:var(--navy)">Total: ${rupiah(o.total||0)}</div>
+      <div class="d-flex gap-2">
+        <a href="order-tracking.html?id=${o.id}" class="btn btn-outline-navy btn-sm px-3">Lacak Pesanan</a>
+        ${o.status==='done'?`<button class="btn btn-laot btn-sm px-3" onclick="showReviewModal('${o.id}')">Beri Ulasan</button>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function render() {
+  const list = document.getElementById('orderList');
+  const filtered = currentFilter ? allOrders.filter(o=>o.status===currentFilter) : allOrders;
+  if (!filtered.length) {
+    list.innerHTML = `<div class="text-center py-5"><div style="font-size:3rem">📦</div><h5 class="mt-3 fw-800">Belum ada pesanan</h5><a href="marketplace.html" class="btn btn-laot mt-2 px-4">Mulai Belanja →</a></div>`;
+    return;
+  }
+  list.innerHTML = filtered.map(orderCard).join('');
+}
+
+function showReviewModal(orderId) {
+  showToast('Fitur ulasan segera tersedia! ⭐','info');
+}
+
+document.querySelectorAll('.cat-chip').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.cat-chip').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); currentFilter=b.dataset.status; render();
+}));
+
+async function init() {
+  allOrders = await getOrders();
+  // Add demo order from last checkout if exists
+  const last = localStorage.getItem('lastOrder');
+  if (last) { try { const o=JSON.parse(last); if(!allOrders.find(x=>x.id===o.id)) allOrders.unshift({...o,date:new Date().toISOString().split('T')[0]}); } catch{} }
+  render();
+}
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body></html>

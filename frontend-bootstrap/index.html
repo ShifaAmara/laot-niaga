@@ -1,102 +1,382 @@
 <!doctype html>
 <html lang="id">
-
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Laot Niaga - Marketplace Hasil Laut Aceh</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Laot Niaga — Marketplace digital hasil laut Aceh. Belanja produk UMKM berkualitas dari nelayan lokal.">
+  <title>Laot Niaga — Marketplace Hasil Laut Aceh</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/custom.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
 </head>
-
 <body>
-  <div class="top-auth-bar">
-    <a class="btn btn-outline-laot-hero px-4" href="login.html">Masuk</a>
-    <a class="btn btn-laot px-4" href="register.html">Daftar</a>
-  </div>
+  <div class="noise-bg"></div>
+  <div class="noise-layer" id="noiseLayer"></div>
 
-  <section class="hero">
-    <div class="hero-overlay"></div>
-
-    <div class="container hero-container">
-      <div class="row align-items-center g-5 position-relative" style="z-index: 3;">
-
-        <div class="col-lg-6">
-          <span class="badge badge-laot rounded-pill mb-3">Marketplace hasil laut Aceh</span>
-          <h1 class="hero-title text-white">Dari pesisir Aceh ke seluruh Indonesia</h1>
-          <p class="lead mt-4 text-white-50">Platform perdagangan digital yang menghubungkan nelayan pengolah dengan
-            konsumen melalui teknologi AI</p>
-          <div class="d-flex flex-wrap gap-3 mt-4">
-            <a class="btn btn-laot btn-lg px-4" href="marketplace.html">Belanja Sekarang</a>
-            <a class="btn btn-outline-laot-hero btn-lg px-4" href="niaga-ai.html">Buka Toko</a>
-          </div>
-        </div>
-
-        <div class="col-lg-6 d-flex justify-content-center justify-content-lg-end">
-          <div class="hero-images-wrapper">
-            <div class="circle-main">
-              <img src="assets/img/ikanasinbulat.png" alt="Produk Utama">
-            </div>
-            <div class="circle-sub">
-              <img src="assets/img/ikanasinbulatkecil.png" alt="Produk Olahan">
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="py-5 bg-white">
+  <!-- NAVBAR -->
+  <nav class="ln-navbar">
     <div class="container">
-      <div class="row g-3">
-        <div class="col-md-4">
-          <div class="stat p-4 rounded-3">
-            <h2 class="h3 fw-bold">270.260 ton</h2>
-            <p class="mb-0 text-muted">Potensi produksi perikanan Aceh menjadi dasar peluang ekonomi maritim.</p>
+      <div class="d-flex align-items-center gap-3 py-2">
+        <a href="index.html" class="me-2 flex-shrink-0">
+          <img class="brand-logo" src="assets/img/logo biru.png" alt="Laot Niaga">
+        </a>
+        <div class="nav-search flex-grow-1 d-none d-md-flex" style="max-width:480px">
+          <i class="bi bi-search"></i>
+          <input id="globalSearch" type="text" placeholder="Cari keumamah, abon, kerupuk...">
+        </div>
+        <div class="d-flex align-items-center gap-2 ms-auto">
+          <button class="theme-toggle" title="Ganti tema"></button>
+          <a href="marketplace.html" class="btn btn-ghost d-none d-lg-flex align-items-center gap-1"><i class="bi bi-shop"></i> Marketplace</a>
+          <a href="niaga-ai.html" class="btn btn-ghost d-none d-lg-flex align-items-center gap-1"><i class="bi bi-stars"></i> NiagaAI</a>
+          <a href="cart.html" class="icon-btn" title="Keranjang">
+            <i class="bi bi-basket2"></i>
+            <span class="badge-dot" data-cart-count style="display:none"></span>
+          </a>
+          <span data-show-guest>
+            <a href="login.html" class="btn btn-outline-navy btn-sm px-3 d-none d-sm-inline-flex">Masuk</a>
+            <a href="register.html" class="btn btn-laot btn-sm px-3 ms-1 d-none d-sm-inline-flex">Daftar</a>
+          </span>
+          <div class="dropdown" data-show-auth style="display:none">
+            <button class="icon-btn" data-bs-toggle="dropdown"><i class="bi bi-person-circle"></i></button>
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" style="background:var(--glass-strong);backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border)!important">
+              <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person me-2"></i>Profil Saya</a></li>
+              <li><a class="dropdown-item" href="orders.html"><i class="bi bi-bag me-2"></i>Pesanan Saya</a></li>
+              <li><a class="dropdown-item" href="dashboard.html"><i class="bi bi-speedometer2 me-2"></i>Dashboard Penjual</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="#" onclick="logout()"><i class="bi bi-box-arrow-right me-2"></i>Keluar</a></li>
+            </ul>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="stat p-4 rounded-3">
-            <h2 class="h3 fw-bold">UMKM</h2>
-            <p class="mb-0 text-muted">Etalase digital untuk ikan asin, keumamah, abon, terasi, dan kerupuk ikan.</p>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="ln-hero">
+    <div class="hero-img-bg"></div>
+    <div class="hero-orb-1"></div>
+    <div class="hero-orb-2"></div>
+    <div class="container py-5 position-relative" style="z-index:2">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="hero-badge"><span class="dot"></span>🌊 Marketplace Maritim Aceh</div>
+          <h1 class="hero-title">Dari pesisir Aceh ke <span class="highlight">seluruh Indonesia</span></h1>
+          <p class="mt-4" style="color:rgba(255,255,255,.8);font-size:1.05rem;line-height:1.7;max-width:500px">
+            Platform digital UMKM hasil laut Aceh — ikan asin, keumamah, abon, kerupuk, terasi, dan olahan laut berkualitas langsung dari nelayan.
+          </p>
+          <div class="d-flex gap-3 flex-wrap mt-4">
+            <a href="marketplace.html" class="btn btn-laot btn-lg px-4 fw-800">🐟 Belanja Sekarang</a>
+            <a href="register.html" class="btn btn-outline-laot-hero btn-lg px-4 fw-700" style="border:2px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px)">Buka Toko Gratis</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="val">500+</div><div class="lbl">Produk UMKM</div></div>
+            <div class="hero-stat"><div class="val">50+</div><div class="lbl">UMKM Terdaftar</div></div>
+            <div class="hero-stat"><div class="val">10rb+</div><div class="lbl">Pembeli Puas</div></div>
+            <div class="hero-stat"><div class="val">4.8★</div><div class="lbl">Rating Rata-rata</div></div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="stat p-4 rounded-3">
-            <h2 class="h3 fw-bold">NiagaAI</h2>
-            <p class="mb-0 text-muted">Rekomendasi nama merek, slogan, deskripsi produk, dan profil usaha.</p>
+        <div class="col-lg-6 d-flex justify-content-center">
+          <div class="hero-product-wrap">
+            <div class="circle-main"><img src="assets/img/ikanasinbulat.png" alt="Produk Laut"></div>
+            <div class="circle-sub"><img src="assets/img/ikanasinbulatkecil.png" alt="Olahan Laut"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-5">
+  <!-- SEARCH BAR -->
+  <section class="py-4 page-shell">
+    <div class="container">
+      <div class="search-mega mx-auto reveal">
+        <select id="searchCat">
+          <option value="">Semua</option>
+          <option>Ikan Olahan</option>
+          <option>Siap Santap</option>
+          <option>Camilan Laut</option>
+          <option>Bumbu Laut</option>
+        </select>
+        <input id="searchInput" type="text" placeholder="Cari produk UMKM hasil laut Aceh...">
+        <button class="btn-search" onclick="doSearch()"><i class="bi bi-search me-1"></i>Cari</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- KATEGORI -->
+  <section class="py-4 page-shell">
+    <div class="container">
+      <div class="section-label reveal">Jelajah Kategori</div>
+      <h2 class="section-title mb-4 reveal">Produk Apa yang Kamu Cari?</h2>
+      <div class="cat-scroll reveal">
+        <a href="marketplace.html?cat=ikan-olahan" class="cat-chip">
+          <span class="icon">🐟</span> Ikan Olahan
+        </a>
+        <a href="marketplace.html?cat=siap-santap" class="cat-chip">
+          <span class="icon">🍽️</span> Siap Santap
+        </a>
+        <a href="marketplace.html?cat=camilan-laut" class="cat-chip">
+          <span class="icon">🦐</span> Camilan Laut
+        </a>
+        <a href="marketplace.html?cat=bumbu-laut" class="cat-chip">
+          <span class="icon">🌶️</span> Bumbu Laut
+        </a>
+        <a href="marketplace.html?cat=minuman" class="cat-chip">
+          <span class="icon">🥤</span> Minuman
+        </a>
+        <a href="marketplace.html" class="cat-chip">
+          <span class="icon">✨</span> Semua
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUK UNGGULAN -->
+  <section class="py-5 page-shell">
     <div class="container">
       <div class="d-flex justify-content-between align-items-end mb-4">
-        <div>
-          <span class="badge badge-laot rounded-pill mb-2">Produk unggulan</span>
-
+        <div class="reveal">
+          <div class="section-label">Pilihan Terbaik</div>
+          <h2 class="section-title">Produk Unggulan 🏆</h2>
         </div>
+        <a href="marketplace.html" class="btn btn-outline-navy btn-sm reveal">Lihat Semua →</a>
       </div>
-      <div class="row g-4" data-featured-products></div>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-3" id="featuredGrid"></div>
     </div>
   </section>
-  </main>
 
-  <footer class="py-4">
-    <div class="container d-flex flex-wrap justify-content-between gap-3">
+  <!-- PROMO BANNER -->
+  <section class="py-4 page-shell">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-md-6 reveal">
+          <div class="rounded-4 p-4 d-flex align-items-center gap-3" style="background:linear-gradient(135deg,var(--navy),var(--ocean));min-height:120px">
+            <div style="font-size:3rem">🐠</div>
+            <div>
+              <div class="fw-800 text-white fs-5">Gratis Ongkir</div>
+              <div style="color:rgba(255,255,255,.8);font-size:.88rem">Pembelian minimal Rp100.000</div>
+              <a href="marketplace.html" class="btn btn-laot btn-sm mt-2 px-3">Belanja Sekarang</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 reveal reveal-d1">
+          <div class="rounded-4 p-4 d-flex align-items-center gap-3" style="background:linear-gradient(135deg,#7b341e,#c05621);min-height:120px">
+            <div style="font-size:3rem">✨</div>
+            <div>
+              <div class="fw-800 text-white fs-5">NiagaAI Gratis</div>
+              <div style="color:rgba(255,255,255,.8);font-size:.88rem">Buat branding UMKM kamu</div>
+              <a href="niaga-ai.html" class="btn btn-laot btn-sm mt-2 px-3">Coba Sekarang</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUK TERBARU -->
+  <section class="py-5 page-shell">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-4">
+        <div class="reveal">
+          <div class="section-label">Baru Ditambahkan</div>
+          <h2 class="section-title">Produk Terbaru 🆕</h2>
+        </div>
+        <a href="marketplace.html" class="btn btn-outline-navy btn-sm reveal">Lihat Semua →</a>
+      </div>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-xl-6 g-3" id="newGrid"></div>
+    </div>
+  </section>
+
+  <!-- UMKM HIGHLIGHTS -->
+  <section class="py-5 page-shell" style="background:var(--ocean-pale)">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <div class="section-label mx-auto" style="justify-content:center">UMKM Terpercaya</div>
+        <h2 class="section-title mt-2">Penjual Terbaik Kami 🏅</h2>
+      </div>
+      <div class="row g-4" id="sellerGrid"></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONI -->
+  <section class="py-5 page-shell">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <div class="section-label mx-auto" style="justify-content:center">Ulasan Pembeli</div>
+        <h2 class="section-title mt-2">Apa Kata Mereka? 💬</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4 reveal"><div class="review-card h-100"><div class="d-flex gap-3 mb-3"><img class="reviewer-avatar" src="assets/img/logo biru.png" alt="Pembeli"><div><div class="fw-700">Ayu Rahmawati</div><div class="star">★★★★★</div></div></div><p>"Keumamahnya enak banget! Rasanya autentik, pengemasan rapih dan higienis. Sudah langganan bulanan di sini."</p><small class="text-muted">Keumamah Premium — Banda Aceh</small></div></div>
+        <div class="col-md-4 reveal reveal-d1"><div class="review-card h-100"><div class="d-flex gap-3 mb-3"><img class="reviewer-avatar" src="assets/img/logo biru.png" alt="Pembeli"><div><div class="fw-700">Budi Santoso</div><div class="star">★★★★★</div></div></div><p>"Kerupuk ikannya renyah banget! Anak-anak suka. Pengiriman cepat dan penjual responsif. Highly recommended!"</p><small class="text-muted">Kerupuk Ikan Pesisir — Jakarta</small></div></div>
+        <div class="col-md-4 reveal reveal-d2"><div class="review-card h-100"><div class="d-flex gap-3 mb-3"><img class="reviewer-avatar" src="assets/img/logo biru.png" alt="Pembeli"><div><div class="fw-700">Siti Nurhaliza</div><div class="star">★★★★☆</div></div></div><p>"Terasi udangnya harum dan kuat rasanya. Masakan jadi makin enak. Harga terjangkau untuk kualitas premium."</p><small class="text-muted">Terasi Udang Premium — Surabaya</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-5 page-shell" style="background:var(--bg-soft)">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 reveal">
+          <div class="section-label">FAQ</div>
+          <h2 class="section-title mt-2">Pertanyaan Umum ❓</h2>
+          <p style="color:var(--text-muted)" class="mt-3">Belum menemukan jawaban? Tanya NiagaAI atau hubungi kami langsung.</p>
+          <a href="#" class="btn btn-navy mt-3 px-4" onclick="document.getElementById('aiFloatBtn')?.click()">Tanya NiagaAI →</a>
+        </div>
+        <div class="col-lg-7 reveal reveal-d1">
+          <div class="accordion" id="faqAccordion" style="--bs-accordion-bg:var(--card);--bs-accordion-border-color:var(--glass-border)">
+            <div class="accordion-item border-0 mb-2 rounded-3 overflow-hidden" style="border:1px solid var(--glass-border)!important">
+              <h2 class="accordion-header"><button class="accordion-button fw-700" style="background:var(--card);color:var(--text)" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Apakah produk di sini aman dan terjamin?</button></h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body" style="color:var(--text-2)">Semua produk di Laot Niaga berasal dari UMKM terverifikasi dengan transparansi bahan dan proses produksi. Kami memastikan standar kebersihan dan kehalalan setiap produk.</div></div>
+            </div>
+            <div class="accordion-item border-0 mb-2 rounded-3 overflow-hidden" style="border:1px solid var(--glass-border)!important">
+              <h2 class="accordion-header"><button class="accordion-button collapsed fw-700" style="background:var(--card);color:var(--text)" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Bagaimana cara berjualan di Laot Niaga?</button></h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body" style="color:var(--text-2)">Daftar akun sebagai UMKM/Nelayan, lengkapi profil toko, lalu mulai tambahkan produk. Gratis tanpa biaya pendaftaran. Dashboard penjual tersedia untuk mengelola produk dan pesanan.</div></div>
+            </div>
+            <div class="accordion-item border-0 mb-2 rounded-3 overflow-hidden" style="border:1px solid var(--glass-border)!important">
+              <h2 class="accordion-header"><button class="accordion-button collapsed fw-700" style="background:var(--card);color:var(--text)" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Pengiriman ke seluruh Indonesia?</button></h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body" style="color:var(--text-2)">Ya! Kami mendukung pengiriman ke seluruh Indonesia melalui JNE, J&T, SiCepat, dan kurir lokal. Estimasi pengiriman 2-5 hari kerja tergantung lokasi tujuan.</div></div>
+            </div>
+            <div class="accordion-item border-0 rounded-3 overflow-hidden" style="border:1px solid var(--glass-border)!important">
+              <h2 class="accordion-header"><button class="accordion-button collapsed fw-700" style="background:var(--card);color:var(--text)" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Apa itu NiagaAI?</button></h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body" style="color:var(--text-2)">NiagaAI adalah asisten kecerdasan buatan yang membantu UMKM membuat nama merek, slogan, deskripsi produk, caption media sosial, dan strategi pemasaran. Gratis untuk semua pengguna Laot Niaga!</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="ln-footer py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand mb-3">🌊 Laot Niaga</div>
+          <p style="color:rgba(255,255,255,.65);font-size:.88rem;line-height:1.7">Marketplace digital yang menghubungkan UMKM hasil laut Aceh dengan pembeli di seluruh Indonesia. Transparan, terpercaya, dan berdampak.</p>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="icon-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="icon-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="icon-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="footer-title">Marketplace</div>
+          <div class="d-flex flex-column gap-2">
+            <a href="marketplace.html">Semua Produk</a>
+            <a href="marketplace.html?cat=ikan-olahan">Ikan Olahan</a>
+            <a href="marketplace.html?cat=camilan-laut">Camilan Laut</a>
+            <a href="marketplace.html?cat=bumbu-laut">Bumbu Laut</a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="footer-title">Penjual</div>
+          <div class="d-flex flex-column gap-2">
+            <a href="register.html">Daftar Jual</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="niaga-ai.html">NiagaAI</a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="footer-title">Bantuan</div>
+          <div class="d-flex flex-column gap-2">
+            <a href="#">Cara Belanja</a>
+            <a href="#">Cara Bayar</a>
+            <a href="#">Lacak Pesanan</a>
+            <a href="#">Hubungi Kami</a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="footer-title">Info</div>
+          <div class="d-flex flex-column gap-2">
+            <a href="#">Tentang Kami</a>
+            <a href="#">Privasi</a>
+            <a href="#">Syarat & Ketentuan</a>
+          </div>
+        </div>
+      </div>
+      <hr style="border-color:rgba(255,255,255,.1);margin:32px 0 16px">
+      <div class="d-flex flex-wrap justify-content-between gap-2" style="color:rgba(255,255,255,.4);font-size:.8rem">
+        <span>© 2024 Laot Niaga. Hak cipta dilindungi.</span>
+        <span>Made with ❤️ for UMKM Aceh</span>
+      </div>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
-</body>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/ai-assistant.js"></script>
+  <script>
+  document.getElementById('globalSearch')?.addEventListener('keypress', e => { if(e.key==='Enter') doSearch(); });
+  function doSearch() {
+    const q = document.getElementById('searchInput')?.value || document.getElementById('globalSearch')?.value || '';
+    if (q.trim()) location.href = `marketplace.html?search=${encodeURIComponent(q.trim())}`;
+  }
 
+  function productCard(p) {
+    const disc = p.original_price ? Math.round((1-p.price/p.original_price)*100) : 0;
+    return `
+    <div class="col">
+      <div class="product-card">
+        ${disc>0?`<div class="badge-discount">-${disc}%</div>`:''}
+        <button class="wishlist-btn ${isWishlisted(p.id)?'active':''}" onclick="event.stopPropagation();toggleWishlist({id:${p.id},name:'${p.name}',image:'${p.image}'});this.classList.toggle('active')">
+          <i class="bi bi-heart${isWishlisted(p.id)?'-fill':''}"></i>
+        </button>
+        <div class="img-wrapper"><a href="product-detail.html?id=${p.id}">
+          <img class="card-img-top" src="${productImage(p)}" alt="${p.name}" loading="lazy">
+        </a></div>
+        <div class="card-body">
+          <div class="product-store">🏪 ${p.store_name}</div>
+          <a href="product-detail.html?id=${p.id}" class="product-name d-block">${p.name}</a>
+          <div class="product-location"><i class="bi bi-geo-alt me-1"></i>${p.origin}</div>
+          <div class="d-flex align-items-center gap-2 mt-1">
+            <span class="star">★</span><span style="font-size:.75rem;color:var(--text-muted)">${p.rating} (${p.sold} terjual)</span>
+          </div>
+          <div class="product-price mt-1">
+            ${rupiah(p.price)} <span style="font-size:.72rem;color:var(--text-muted);font-weight:500">/ ${p.unit}</span>
+            ${p.original_price?`<div class="product-price-old">${rupiah(p.original_price)}</div>`:''}
+          </div>
+          <button class="btn-addcart" onclick="addToCart({id:${p.id},name:'${p.name}',price:${p.price},unit:'${p.unit}',image:'${productImage(p)}'})">
+            <i class="bi bi-cart-plus me-1"></i>Keranjang
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function sellerCard(s) {
+    return `
+    <div class="col-md-4 reveal">
+      <a href="seller-profile.html?seller=${s.id}" class="d-block glass-card p-4 text-center h-100" style="border-radius:var(--r-xl)">
+        <img src="${s.avatar}" class="rounded-circle mb-3" style="width:64px;height:64px;object-fit:cover;border:3px solid var(--yellow)" alt="${s.name}">
+        <div class="fw-800 fs-6">${s.name}</div>
+        <div style="font-size:.78rem;color:var(--text-muted)">${s.address}</div>
+        <div class="d-flex justify-content-center gap-3 mt-3">
+          <div><div class="fw-700" style="color:var(--ocean)">${s.products}</div><div style="font-size:.7rem;color:var(--text-muted)">Produk</div></div>
+          <div><div class="fw-700" style="color:var(--yellow)">★${s.rating}</div><div style="font-size:.7rem;color:var(--text-muted)">Rating</div></div>
+          <div><div class="fw-700" style="color:var(--teal)">${s.sold}+</div><div style="font-size:.7rem;color:var(--text-muted)">Terjual</div></div>
+        </div>
+      </a>
+    </div>`;
+  }
+
+  async function init() {
+    const products = await getProducts();
+    const featured = document.getElementById('featuredGrid');
+    if (featured) featured.innerHTML = products.slice(0,4).map(productCard).join('');
+    const newGrid = document.getElementById('newGrid');
+    if (newGrid) newGrid.innerHTML = products.slice(0,6).map(productCard).join('');
+    const sellerGrid = document.getElementById('sellerGrid');
+    if (sellerGrid) sellerGrid.innerHTML = DEMO_SELLERS.map(sellerCard).join('');
+    setTimeout(() => document.querySelectorAll('.reveal').forEach(el => {
+      if (!el.classList.contains('visible')) {
+        const obs = new IntersectionObserver(e => { if(e[0].isIntersecting){el.classList.add('visible');obs.disconnect();} },{threshold:.08});
+        obs.observe(el);
+      }
+    }), 100);
+  }
+  document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
 </html>

@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard Penjual — Laot Niaga</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body data-dashboard="umkm">
+<div class="noise-bg"></div><div class="noise-layer" id="noiseLayer"></div>
+
+<!-- NAVBAR -->
+<nav class="ln-navbar">
+  <div class="container"><div class="d-flex align-items-center gap-3 py-2">
+    <a href="index.html"><img class="brand-logo" src="assets/img/logo biru.png" alt="Laot Niaga"></a>
+    <span class="fw-700 small d-none d-md-block" style="color:var(--text-muted)">Dashboard Penjual</span>
+    <div class="ms-auto d-flex gap-2">
+      <button class="theme-toggle"></button>
+      <a href="marketplace.html" class="btn btn-ghost btn-sm d-none d-md-inline-flex">🏪 Marketplace</a>
+      <a href="niaga-ai.html" class="btn btn-laot btn-sm px-3"><i class="bi bi-stars me-1"></i>NiagaAI</a>
+      <div class="dropdown">
+        <button class="icon-btn" data-bs-toggle="dropdown"><i class="bi bi-person-circle"></i></button>
+        <ul class="dropdown-menu dropdown-menu-end" style="background:var(--glass-strong);border:1px solid var(--glass-border)!important;backdrop-filter:var(--glass-blur)">
+          <li><a class="dropdown-item" href="seller-profile.html?seller=1"><i class="bi bi-shop me-2"></i>Profil Toko</a></li>
+          <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person me-2"></i>Profil Akun</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="#" onclick="logout()"><i class="bi bi-box-arrow-right me-2"></i>Keluar</a></li>
+        </ul>
+      </div>
+    </div>
+  </div></div>
+</nav>
+
+<div class="dash-layout" style="position:relative;z-index:2">
+  <!-- Sidebar -->
+  <aside class="dash-sidebar">
+    <div class="store-info">
+      <div class="d-flex align-items-center gap-2">
+        <img src="assets/img/logo biru.png" class="store-avatar" alt="Toko">
+        <div>
+          <div class="fw-800 small" id="storeNameDisplay">Toko Saya</div>
+          <div style="font-size:.7rem;color:var(--text-muted)">Penjual Terverifikasi ✓</div>
+        </div>
+      </div>
+    </div>
+    <div class="dash-nav-section">Menu Utama</div>
+    <a href="dashboard.html" class="dash-nav-item active"><i class="bi bi-speedometer2"></i>Dashboard</a>
+    <a href="dashboard-products.html" class="dash-nav-item"><i class="bi bi-box-seam"></i>Produk</a>
+    <a href="dashboard-products.html#add" class="dash-nav-item"><i class="bi bi-plus-circle"></i>Tambah Produk</a>
+    <a href="dashboard-orders.html" class="dash-nav-item"><i class="bi bi-bag-check"></i>Pesanan</a>
+    <a href="chat.html" class="dash-nav-item"><i class="bi bi-chat-dots"></i>Chat Pembeli</a>
+    <div class="dash-nav-section">Analitik</div>
+    <a href="#" class="dash-nav-item"><i class="bi bi-graph-up"></i>Statistik</a>
+    <a href="#" class="dash-nav-item"><i class="bi bi-wallet2"></i>Pendapatan</a>
+    <a href="#" class="dash-nav-item"><i class="bi bi-star"></i>Ulasan</a>
+    <div class="dash-nav-section">Toko</div>
+    <a href="#" class="dash-nav-item"><i class="bi bi-ticket-perforated"></i>Promo</a>
+    <a href="seller-profile.html?seller=1" class="dash-nav-item"><i class="bi bi-shop"></i>Profil Toko</a>
+    <a href="#" class="dash-nav-item"><i class="bi bi-gear"></i>Pengaturan</a>
+  </aside>
+
+  <!-- Content -->
+  <div class="dash-content">
+    <!-- Header -->
+    <div class="dash-header reveal">
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+        <div>
+          <div class="section-label">Panel Kontrol</div>
+          <h1 class="section-title">Selamat datang, <span id="ownerName" style="color:var(--yellow)">Penjual</span>! 👋</h1>
+          <p style="color:var(--text-muted);font-size:.88rem" id="greetingText">Berikut ringkasan performa toko Anda hari ini.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <a href="dashboard-products.html#add" class="btn btn-laot px-4 fw-700"><i class="bi bi-plus-lg me-2"></i>Tambah Produk</a>
+          <a href="dashboard-orders.html" class="btn btn-outline-navy px-4 fw-700">Kelola Pesanan</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-lg-3 reveal">
+        <div class="stat-card" style="--accent:var(--ocean);--accent-pale:var(--ocean-pale)">
+          <div class="stat-icon">📦</div>
+          <div class="stat-value" id="sc-products">12</div>
+          <div class="stat-label">Produk Aktif</div>
+          <div class="stat-change up"><i class="bi bi-arrow-up me-1"></i>+3 bulan ini</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3 reveal reveal-d1">
+        <div class="stat-card" style="--accent:var(--yellow);--accent-pale:var(--yellow-pale)">
+          <div class="stat-icon">🛒</div>
+          <div class="stat-value" id="sc-orders">28</div>
+          <div class="stat-label">Pesanan Bulan Ini</div>
+          <div class="stat-change up"><i class="bi bi-arrow-up me-1"></i>+12%</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3 reveal reveal-d2">
+        <div class="stat-card" style="--accent:var(--teal);--accent-pale:var(--teal-pale)">
+          <div class="stat-icon">💰</div>
+          <div class="stat-value" id="sc-revenue">Rp8jt</div>
+          <div class="stat-label">Pendapatan</div>
+          <div class="stat-change up"><i class="bi bi-arrow-up me-1"></i>+18%</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3 reveal" style="transition-delay:.3s">
+        <div class="stat-card" style="--accent:#f59e0b;--accent-pale:#fef3c7">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-value">4.8</div>
+          <div class="stat-label">Rating Toko</div>
+          <div class="stat-change up"><i class="bi bi-arrow-up me-1"></i>481 ulasan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row g-4 mb-4">
+      <div class="col-lg-8 reveal">
+        <div class="panel p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-800 mb-0">📈 Grafik Penjualan (7 Hari)</h6>
+            <select class="form-select form-select-sm" style="width:auto" id="chartRange">
+              <option>7 Hari</option><option>30 Hari</option><option>3 Bulan</option>
+            </select>
+          </div>
+          <canvas id="salesChart" height="100"></canvas>
+        </div>
+      </div>
+      <div class="col-lg-4 reveal reveal-d1">
+        <div class="panel p-4 h-100">
+          <h6 class="fw-800 mb-3">🥧 Kategori Produk</h6>
+          <canvas id="categoryChart"></canvas>
+          <div class="mt-3 d-flex flex-column gap-2" id="catLegend"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Orders + Low Stock -->
+    <div class="row g-4">
+      <div class="col-lg-7 reveal">
+        <div class="panel p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-800 mb-0">📋 Pesanan Terbaru</h6>
+            <a href="dashboard-orders.html" class="btn btn-ghost btn-sm" style="color:var(--ocean)">Lihat Semua →</a>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle" style="--bs-table-bg:transparent">
+              <thead><tr>
+                <th style="font-size:.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;border-color:var(--line)">ID</th>
+                <th style="font-size:.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;border-color:var(--line)">Produk</th>
+                <th style="font-size:.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;border-color:var(--line)">Total</th>
+                <th style="font-size:.72rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;border-color:var(--line)">Status</th>
+              </tr></thead>
+              <tbody id="recentOrdersTable">
+                <tr><td colspan="4" class="text-center py-3"><div class="skeleton" style="height:40px"></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 reveal reveal-d1">
+        <div class="panel p-4 h-100">
+          <h6 class="fw-800 mb-3">⚠️ Stok Menipis</h6>
+          <div id="lowStockList" class="d-flex flex-column gap-2"></div>
+          <hr style="border-color:var(--line)">
+          <div class="d-flex flex-column gap-2">
+            <h6 class="fw-800 mb-2">💬 Pesan Terbaru</h6>
+            <div class="chat-user-item" onclick="location.href='chat.html'" style="cursor:pointer;border-radius:var(--r-md)">
+              <div class="chat-avatar" style="width:38px;height:38px"><img src="assets/img/logo biru.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%"><div class="status-dot"></div></div>
+              <div class="flex-grow-1"><div class="fw-700 small">Ahmad Fauzi</div><div style="font-size:.75rem;color:var(--text-muted)">Stok Keumamah masih ada?</div></div>
+              <span class="badge rounded-pill" style="background:var(--ocean);color:#fff;font-size:.65rem">2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script><script src="js/cart.js"></script><script src="js/theme.js"></script>
+<script>
+// Auth guard
+const user = getUser();
+if (!user || user.role !== 'umkm') { location.href = 'login.html'; }
+
+function initDash() {
+  if (!user) return;
+  document.getElementById('storeNameDisplay').textContent = user.store_name || user.name;
+  document.getElementById('ownerName').textContent = user.store_name || user.name;
+  const h = new Date().getHours();
+  document.getElementById('greetingText').textContent = h<12?'Selamat pagi! Berikut ringkasan toko Anda hari ini.':h<15?'Selamat siang! Ada 5 pesanan baru yang perlu diproses.':'Selamat sore! Performa toko Anda sangat baik minggu ini.';
+
+  // Stats from demo
+  getDashboard().then(d => {
+    document.getElementById('sc-products').textContent = d.summary.product_count;
+    document.getElementById('sc-orders').textContent = d.summary.sold_items;
+    document.getElementById('sc-revenue').textContent = shortRupiah(d.summary.revenue);
+  });
+
+  // Recent orders table
+  document.getElementById('recentOrdersTable').innerHTML = DEMO_ORDERS.map(o=>`
+    <tr>
+      <td><span class="fw-700 small" style="color:var(--ocean)">#${o.id}</span></td>
+      <td style="font-size:.82rem">${(o.items||[{}])[0]?.name||'Produk'}</td>
+      <td class="fw-700 small">${rupiah(o.total)}</td>
+      <td><span class="badge rounded-pill ${o.status==='done'?'badge-status-done':o.status==='ship'?'badge-status-ship':'badge-status-process'} fs-7">${o.status==='done'?'Selesai':o.status==='ship'?'Dikirim':'Diproses'}</span></td>
+    </tr>`).join('');
+
+  // Low stock
+  const low = DEMO_PRODUCTS.filter(p=>p.stock<20);
+  document.getElementById('lowStockList').innerHTML = low.map(p=>`
+    <div class="d-flex align-items-center gap-2">
+      <img src="${productImage(p)}" style="width:40px;height:40px;border-radius:var(--r-md);object-fit:cover">
+      <div class="flex-grow-1">
+        <div class="fw-700 small">${p.name}</div>
+        <div class="d-flex align-items-center gap-2 mt-1">
+          <div class="progress flex-grow-1" style="height:5px;border-radius:3px">
+            <div class="progress-bar ${p.stock<10?'bg-danger':'bg-warning'}" style="width:${Math.min(100,p.stock*3)}%"></div>
+          </div>
+          <span style="font-size:.72rem;color:var(--text-muted)">${p.stock} stok</span>
+        </div>
+      </div>
+      <a href="dashboard-products.html" class="btn btn-laot btn-sm px-2" style="font-size:.7rem">Isi</a>
+    </div>`).join('');
+}
+
+function initCharts() {
+  const isDark = document.documentElement.getAttribute('data-theme')==='dark';
+  const gridColor = isDark?'rgba(255,255,255,.06)':'rgba(0,0,0,.05)';
+  const textColor = isDark?'rgba(255,255,255,.5)':'rgba(0,0,0,.4)';
+
+  // Sales Chart
+  const labels = ['Sen','Sel','Rab','Kam','Jum','Sab','Min'];
+  const salesCtx = document.getElementById('salesChart').getContext('2d');
+  new Chart(salesCtx, {
+    type:'line',
+    data:{
+      labels,
+      datasets:[{
+        label:'Penjualan',
+        data:[3,5,4,7,6,9,8],
+        borderColor:'#1565c0', backgroundColor:'rgba(21,101,192,.08)',
+        borderWidth:2.5, fill:true, tension:.4,
+        pointBackgroundColor:'#f9a825', pointRadius:5, pointHoverRadius:7
+      },{
+        label:'Pesanan',
+        data:[2,3,3,5,4,6,5],
+        borderColor:'#f9a825', backgroundColor:'rgba(249,168,37,.05)',
+        borderWidth:2, fill:false, tension:.4, borderDash:[5,3],
+        pointBackgroundColor:'#1565c0', pointRadius:4
+      }]
+    },
+    options:{
+      responsive:true, plugins:{legend:{labels:{color:textColor,font:{size:11}}}},
+      scales:{
+        x:{grid:{color:gridColor},ticks:{color:textColor,font:{size:11}}},
+        y:{grid:{color:gridColor},ticks:{color:textColor,font:{size:11},callback:v=>v+'k'}}
+      }
+    }
+  });
+
+  // Category donut
+  const catCtx = document.getElementById('categoryChart').getContext('2d');
+  const cats = ['Ikan Olahan','Siap Santap','Camilan','Bumbu'];
+  const catColors = ['#1565c0','#f9a825','#00897b','#7c3aed'];
+  new Chart(catCtx, {
+    type:'doughnut',
+    data:{labels:cats, datasets:[{data:[40,30,20,10], backgroundColor:catColors, borderWidth:0, hoverOffset:8}]},
+    options:{responsive:true, plugins:{legend:{display:false}}, cutout:'72%'}
+  });
+  document.getElementById('catLegend').innerHTML = cats.map((c,i)=>`
+    <div class="d-flex justify-content-between align-items-center small">
+      <div class="d-flex align-items-center gap-2"><div style="width:10px;height:10px;border-radius:50%;background:${catColors[i]}"></div><span style="color:var(--text-2)">${c}</span></div>
+      <span class="fw-700">${[40,30,20,10][i]}%</span>
+    </div>`).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => { initDash(); initCharts(); });
+</script>
+</body></html>

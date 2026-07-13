@@ -3,25 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - Laot Niaga</title>
+  <meta name="description" content="Masuk ke akun Laot Niaga — Marketplace hasil laut Aceh.">
+  <title>Masuk — Laot Niaga</title>
   <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
-  <main class="page-shell">
-    <div class="container">
-      <div class="auth-box p-4 mx-auto" style="max-width: 460px;">
-        <a href="index.html"><img class="brand-logo mb-4" src="assets/img/logo.svg" alt="Laot Niaga"></a>
-        <h1>Masuk Akun</h1>
-        <p class="text-muted">Demo UMKM: umkm@laotniaga.test, password: password123</p>
+  <!-- Animated Background -->
+  <div class="bg-gradient-orbs"></div>
+  <div class="bg-orb-gold"></div>
+  <div class="noise-overlay"></div>
+
+  <main class="page-shell d-flex items-center justify-center" style="min-height:100vh;padding-top:40px">
+    <div class="container d-flex justify-center">
+      <div class="auth-box reveal">
+        <div class="text-center mb-4">
+          <a href="index.html"><img class="brand-logo mx-auto mb-4" src="assets/img/logo.svg" alt="Laot Niaga"></a>
+          <h1>Masuk Akun</h1>
+          <p class="auth-subtitle">Akses marketplace dan kelola produk UMKM kamu.</p>
+        </div>
+
+        <div class="glass-strong p-3 mb-4" style="border-radius:var(--r-md);text-align:center">
+          <p class="small text-muted mb-1">🔑 Demo UMKM</p>
+          <p class="small" style="color:var(--accent)">umkm@laotniaga.test &nbsp;/&nbsp; password123</p>
+        </div>
+
         <form data-login-form>
-          <input class="mb-3" type="email" name="email" placeholder="Email" required>
-          <input class="mb-3" type="password" name="password" placeholder="Password" required>
-          <button class="btn btn-laot w-100 mb-3">Masuk</button>
-          <a href="register.html">Belum punya akun? Daftar</a>
+          <input class="mb-3" type="email" name="email" placeholder="📧 Email" required autocomplete="email">
+          <input class="mb-3" type="password" name="password" placeholder="🔒 Password" required autocomplete="current-password">
+          <button class="btn btn-primary w-100 btn-lg mb-4">Masuk</button>
+          <p class="text-center">
+            <a class="auth-link" href="register.html">Belum punya akun? Daftar →</a>
+          </p>
         </form>
       </div>
     </div>
   </main>
+
   <script src="js/main.js"></script>
 </body>
 </html>

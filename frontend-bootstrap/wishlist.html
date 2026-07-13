@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Wishlist — Laot Niaga</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+<div class="noise-bg"></div><div class="noise-layer" id="noiseLayer"></div>
+<nav class="ln-navbar">
+  <div class="container"><div class="d-flex align-items-center gap-3 py-2">
+    <a href="index.html"><img class="brand-logo" src="assets/img/logo biru.png" alt="Laot Niaga"></a>
+    <span class="fw-800 ms-2"><i class="bi bi-heart-fill text-danger me-2"></i>Wishlist Saya</span>
+    <div class="ms-auto d-flex gap-2">
+      <button class="theme-toggle"></button>
+      <a href="cart.html" class="icon-btn"><i class="bi bi-basket2"></i><span class="badge-dot" data-cart-count style="display:none"></span></a>
+    </div>
+  </div></div>
+</nav>
+
+<main class="page-shell py-5">
+  <div class="container">
+    <div class="ln-breadcrumb mb-4 reveal"><a href="index.html">Beranda</a><span class="sep">/</span><span>Wishlist</span></div>
+    <div class="d-flex justify-content-between align-items-center mb-4 reveal">
+      <h5 class="fw-800 mb-0" id="wlCount">0 Produk Tersimpan</h5>
+      <button class="btn btn-ghost btn-sm text-danger" onclick="clearWishlist()"><i class="bi bi-trash me-1"></i>Hapus Semua</button>
+    </div>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-3" id="wishlistGrid"></div>
+  </div>
+</main>
+
+<footer class="ln-footer py-4 mt-5">
+  <div class="container d-flex justify-content-between"><span class="footer-brand">🌊 Laot Niaga</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script><script src="js/cart.js"></script><script src="js/theme.js"></script><script src="js/ai-assistant.js"></script>
+<script>
+function clearWishlist() {
+  if (!confirm('Hapus semua wishlist?')) return;
+  localStorage.removeItem('lnWishlist');
+  renderWishlist();
+  showToast('Wishlist dikosongkan','info');
+}
+
+function renderWishlist() {
+  const wl = getWishlist();
+  const grid = document.getElementById('wishlistGrid');
+  const count = document.getElementById('wlCount');
+  count.textContent = `${wl.length} Produk Tersimpan`;
+  if (!wl.length) {
+    grid.innerHTML = `<div class="col-12 text-center py-5">
+      <div style="font-size:4rem">💔</div>
+      <h4 class="mt-3 fw-800">Wishlist Kosong</h4>
+      <p style="color:var(--text-muted)">Simpan produk favorit kamu di sini!</p>
+      <a href="marketplace.html" class="btn btn-laot px-4 mt-2">🐟 Jelajah Produk</a>
+    </div>`;
+    return;
+  }
+  grid.innerHTML = wl.map(p => `
+  <div class="col">
+    <div class="product-card">
+      <button class="wishlist-btn active" onclick="removeFromWl(${p.id},this)"><i class="bi bi-heart-fill"></i></button>
+      <div class="img-wrapper"><a href="product-detail.html?id=${p.id}">
+        <img class="card-img-top" src="${p.image||'assets/img/keumamah.jpg'}" alt="${p.name}" loading="lazy">
+      </a></div>
+      <div class="card-body">
+        <a href="product-detail.html?id=${p.id}" class="product-name d-block">${p.name}</a>
+        ${p.price?`<div class="product-price mt-1">${rupiah(p.price)}</div>`:''}
+        <div class="d-flex gap-2 mt-2">
+          <a href="product-detail.html?id=${p.id}" class="btn btn-outline-navy btn-sm flex-grow-1">Lihat Detail</a>
+          ${p.price?`<button class="btn btn-laot btn-sm px-2" onclick="addToCart({id:${p.id},name:'${p.name.replace(/'/g,"\\'")}',price:${p.price},image:'${p.image||'assets/img/keumamah.jpg'}'})" title="Tambah ke keranjang"><i class="bi bi-cart-plus"></i></button>`:''}
+        </div>
+      </div>
+    </div>
+  </div>`).join('');
+}
+
+function removeFromWl(id, btn) {
+  toggleWishlist({ id });
+  btn.closest('.col').style.cssText = 'transition:.3s;opacity:0;transform:scale(.9)';
+  setTimeout(renderWishlist, 300);
+}
+
+document.addEventListener('DOMContentLoaded', renderWishlist);
+</script>
+</body></html>

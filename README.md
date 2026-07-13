@@ -1,168 +1,241 @@
-# Laot Niaga
+# 🌊 Laot Niaga — Marketplace UMKM Hasil Laut Aceh
 
-Laot Niaga adalah contoh project full-stack marketplace produk olahan hasil laut Aceh. Project ini dibuat sesuai proposal: ada marketplace, profil UMKM, dashboard kelola produk, transaksi sederhana, autentikasi, upload gambar, dan NiagaAI untuk rekomendasi branding.
+Platform marketplace modern untuk UMKM pengolah hasil laut Aceh. Dibangun dengan desain glassmorphism premium, tampilan maritim yang elegan, dan pengalaman belanja yang intuitif.
 
-## Struktur
+---
 
-```text
+## ✨ Fitur Utama
+
+| Fitur | Status |
+|-------|--------|
+| Marketplace produk laut dengan filter & search | ✅ |
+| Detail produk + galeri + ulasan | ✅ |
+| Keranjang belanja + checkout | ✅ |
+| Lacak pesanan real-time | ✅ |
+| Login / Register (buyer & UMKM) | ✅ |
+| Dashboard UMKM (produk, pesanan, statistik) | ✅ |
+| Grafik penjualan (Chart.js) | ✅ |
+| Chat pembeli–penjual | ✅ |
+| Wishlist | ✅ |
+| Profil toko UMKM | ✅ |
+| NiagaAI — asisten branding | ✅ |
+| Dark / Light mode | ✅ |
+| Responsif mobile | ✅ |
+| Backend REST API (Express + MySQL) | ✅ |
+
+---
+
+## 🗂️ Struktur Proyek
+
+```
 laot-niaga/
-├── backend/
-│   ├── config/db.js
-│   ├── controllers/
-│   ├── middleware/auth.js
-│   ├── models/schema.sql
-│   ├── routes/
-│   ├── uploads/
-│   ├── .env
-│   ├── package.json
-│   └── server.js
-├── frontend-bootstrap/
-│   ├── index.html
-│   ├── marketplace.html
-│   ├── product-detail.html
-│   ├── dashboard-umkm.html
-│   ├── niaga-ai.html
-│   ├── profil-umkm.html
-│   ├── login.html
-│   ├── register.html
-│   ├── assets/
-│   └── js/main.js
-└── frontend-custom/
-    └── halaman yang sama, tetapi memakai CSS custom tanpa Bootstrap
+├── frontend-bootstrap/          # Frontend utama
+│   ├── index.html               # Beranda
+│   ├── marketplace.html         # Toko produk
+│   ├── product-detail.html      # Detail produk
+│   ├── cart.html                # Keranjang
+│   ├── checkout.html            # Checkout
+│   ├── orders.html              # Pesanan saya
+│   ├── order-tracking.html      # Lacak pesanan
+│   ├── wishlist.html            # Wishlist
+│   ├── login.html               # Login
+│   ├── register.html            # Daftar
+│   ├── profile.html             # Profil akun
+│   ├── chat.html                # Chat
+│   ├── seller-profile.html      # Profil toko UMKM
+│   ├── niaga-ai.html            # NiagaAI assistant
+│   ├── dashboard.html           # Dashboard UMKM
+│   ├── dashboard-products.html  # Kelola produk
+│   ├── dashboard-orders.html    # Kelola pesanan
+│   ├── 404.html                 # Halaman error
+│   ├── assets/css/custom.css    # Design system lengkap
+│   └── js/
+│       ├── api.js               # API client + demo data
+│       ├── theme.js             # Dark mode, noise, toast
+│       ├── cart.js              # Keranjang + wishlist
+│       ├── ai-assistant.js      # Floating AI bot
+│       └── dashboard.js         # Dashboard helpers
+│
+└── backend/                     # Backend API
+    ├── server.js                # Entry point Express
+    ├── .env                     # Konfigurasi (salin dari .env.example)
+    ├── config/db.js             # Koneksi MySQL
+    ├── middleware/auth.js       # JWT middleware
+    ├── models/schema.sql        # Skema database + seed data
+    ├── routes/
+    │   ├── auth.js              # /api/auth
+    │   ├── products.js          # /api/products
+    │   ├── orders.js            # /api/orders
+    │   ├── reviews.js           # /api/reviews
+    │   ├── chat.js              # /api/chat
+    │   └── ai.js               # /api/ai
+    └── controllers/
+        ├── authController.js
+        ├── productController.js
+        ├── orderController.js
+        ├── reviewController.js
+        ├── chatController.js
+        └── aiController.js
 ```
 
-## Cara Menjalankan Backend
+---
 
-1. Masuk ke folder backend.
+## 🚀 Cara Setup & Jalankan
+
+### 1. Persiapan XAMPP
+
+1. Buka **XAMPP Control Panel**
+2. Start **Apache** dan **MySQL**
+3. Buka **phpMyAdmin** → `http://localhost/phpmyadmin`
+4. Klik **Import** → pilih file `backend/models/schema.sql`
+5. Klik **Go** untuk membuat database dan data demo
+
+### 2. Setup Backend (Node.js)
 
 ```bash
+# Masuk ke folder backend
 cd backend
-```
 
-2. Install dependency.
-
-```bash
+# Install dependencies
 npm install
+
+# Salin file .env
+copy .env.example .env
 ```
 
-Jika PowerShell menolak `npm` karena execution policy, jalankan:
-
-```bash
-npm.cmd install
-```
-
-3. Buat database MySQL dengan file:
-
-```text
-backend/models/schema.sql
-```
-
-Di phpMyAdmin, buka tab SQL, paste isi file tersebut, lalu jalankan.
-
-4. Sesuaikan konfigurasi di `.env`.
-
+Edit `.env` sesuai konfigurasi XAMPP:
 ```env
 PORT=5000
 DB_HOST=localhost
+DB_PORT=3306
 DB_USER=root
-DB_PASSWORD=
+DB_PASSWORD=          # kosong jika XAMPP default
 DB_NAME=laot_niaga
-JWT_SECRET=laot_niaga_secret_ganti_saat_produksi
-GEMINI_KEY=
-FRONTEND_ORIGIN=http://localhost:5500
+JWT_SECRET=ganti_dengan_string_panjang_acak
+GEMINI_API_KEY=       # opsional, untuk NiagaAI live
 ```
-
-5. Jalankan server.
 
 ```bash
-npm run dev
+# Jalankan backend
+npm run dev          # development (nodemon)
+# atau
+npm start            # production
 ```
 
-atau:
+Backend berjalan di: `http://localhost:5000`
 
+### 3. Buka Frontend
+
+**Cara 1 — Python (paling mudah):**
 ```bash
-npm start
+cd frontend-bootstrap
+python -m http.server 8080
 ```
+Buka: `http://localhost:8080`
 
-Di PowerShell yang memblokir script, gunakan:
+**Cara 2 — VS Code Live Server:**
+Klik kanan `index.html` → Open with Live Server
 
-```bash
-npm.cmd run dev
-```
+**Cara 3 — Langsung buka file:**
+Buka `frontend-bootstrap/index.html` di browser
+> ⚠️ Mode CORS tidak aktif saat file:// — gunakan server lokal untuk koneksi ke backend
 
-API akan berjalan di:
+---
 
-```text
-http://localhost:5000
-```
+## 🔑 Akun Demo
 
-## Cara Membuka Frontend
+| Role | Email | Password |
+|------|-------|---------|
+| 👤 Pembeli | `demo@user.com` | `demo123` |
+| 🏪 UMKM/Penjual | `demo@umkm.com` | `demo123` |
+| 🏪 UMKM 2 | `rahmi@umkm.com` | `demo123` |
+| ⚙️ Admin | `admin@laot.com` | `admin123` |
 
-Pilih salah satu versi:
+> Akun demo berfungsi **tanpa backend** — data disimpan di localStorage.
 
-- `frontend-bootstrap/index.html`
-- `frontend-custom/index.html`
+---
 
-Untuk hasil terbaik, buka dengan Live Server di VS Code. Kalau backend belum berjalan, frontend tetap menampilkan data demo.
+## 🌐 API Endpoints
 
-## Akun Demo
+### Auth — `/api/auth`
+| Method | Path | Deskripsi | Auth |
+|--------|------|-----------|------|
+| POST | `/register` | Daftar akun | - |
+| POST | `/login` | Login | - |
+| GET | `/me` | Profil saya | ✅ |
+| PUT | `/me` | Update profil + avatar | ✅ |
+| PUT | `/password` | Ganti password | ✅ |
 
-Password untuk akun demo:
+### Products — `/api/products`
+| Method | Path | Deskripsi | Auth |
+|--------|------|-----------|------|
+| GET | `/` | Daftar produk (filter: q, category, seller_id) | - |
+| GET | `/:id` | Detail produk | - |
+| GET | `/seller/:id` | Profil + produk toko | - |
+| GET | `/dashboard/me` | Dashboard UMKM | UMKM |
+| POST | `/` | Tambah produk | UMKM |
+| PUT | `/:id` | Edit produk | UMKM |
+| DELETE | `/:id` | Arsipkan produk | UMKM |
 
-```text
-password123
-```
+### Orders — `/api/orders`
+| Method | Path | Deskripsi | Auth |
+|--------|------|-----------|------|
+| POST | `/` | Buat pesanan | Buyer |
+| GET | `/me` | Pesanan saya | Buyer |
+| GET | `/seller` | Pesanan toko | UMKM |
+| GET | `/:id` | Detail pesanan | Auth |
+| PATCH | `/:id/status` | Update status + resi | UMKM |
 
-UMKM:
+### Reviews — `/api/reviews`
+| Method | Path | Deskripsi | Auth |
+|--------|------|-----------|------|
+| GET | `/product/:id` | Ulasan produk | - |
+| POST | `/product/:id` | Tambah ulasan | Auth |
 
-```text
-umkm@laotniaga.test
-```
+### Chat — `/api/chat`
+| Method | Path | Deskripsi | Auth |
+|--------|------|-----------|------|
+| GET | `/conversations` | Daftar percakapan | Auth |
+| GET | `/:userId` | Pesan dengan user | Auth |
+| POST | `/:userId` | Kirim pesan | Auth |
 
-Pembeli:
+### AI — `/api/ai`
+| Method | Path | Deskripsi | Auth |
+|--------|------|-----------|------|
+| POST | `/` | Generate branding (Gemini) | - |
 
-```text
-buyer@laotniaga.test
-```
+---
 
-## Fitur
+## 🎨 Design System
 
-- Register dan login pembeli atau UMKM.
-- JWT untuk proteksi route backend.
-- CRUD produk UMKM dengan upload gambar.
-- Marketplace dengan pencarian dan filter kategori.
-- Detail produk dengan transparansi bahan, asal, stok, proses, dan masa simpan.
-- Profil UMKM sebagai etalase toko digital.
-- Pesanan sederhana dengan pengurangan stok.
-- Dashboard UMKM berisi ringkasan produk, penjualan, dan omzet.
-- NiagaAI untuk ide nama merek, slogan, deskripsi produk, dan profil usaha.
+- **Warna:** Navy `#0c1b5e` · Ocean `#1565c0` · Yellow `#f9a825` · Teal `#00897b`
+- **Font:** Inter + Plus Jakarta Sans (Google Fonts)
+- **Efek:** Glassmorphism · Animated noise background · Floating orbs
+- **Mode:** Dark / Light toggle (disimpan di localStorage)
 
-## Catatan NiagaAI
+---
 
-Jika `GEMINI_KEY` kosong, backend memakai fallback lokal sehingga fitur tetap bisa dicoba. Jika ingin memakai Google Gemini, isi `GEMINI_KEY` di file `.env`.
+## 🛠️ Teknologi
 
-## Endpoint Utama
+| Layer | Stack |
+|-------|-------|
+| Frontend | HTML5, Bootstrap 5, Vanilla JS, Chart.js |
+| Styling | Custom CSS (1200+ baris design system) |
+| Backend | Node.js, Express.js |
+| Database | MySQL (XAMPP) |
+| Auth | JWT (jsonwebtoken) |
+| Upload | Multer |
+| AI | Google Gemini API (opsional) |
 
-```text
-POST   /api/auth/register
-POST   /api/auth/login
-GET    /api/auth/me
-GET    /api/products
-GET    /api/products/:id
-POST   /api/products
-PUT    /api/products/:id
-DELETE /api/products/:id
-POST   /api/orders
-GET    /api/orders/me
-GET    /api/orders/seller
-PATCH  /api/orders/:id/status
-POST   /api/ai/branding
-```
+---
 
-## Responsif
+## 📝 Catatan Penting
 
-Kedua frontend dibuat responsif untuk desktop, tablet, dan HP:
+- Frontend berjalan **offline** dengan data demo jika backend tidak aktif
+- Password di seed data menggunakan **plain text** untuk kemudahan testing — di production gunakan bcrypt
+- Upload foto produk disimpan di folder `backend/uploads/`
+- File `.env` **jangan di-commit** ke Git (sudah ada di `.gitignore`)
 
-- Desktop: grid produk 3 kolom.
-- Tablet: layout menyesuaikan lebar layar.
-- HP: layout turun menjadi 1 kolom, tombol dan input lebih mudah disentuh.
+---
+
+*Dibuat dengan ❤️ untuk UMKM pengolah hasil laut Aceh · Laot Niaga v2.0*

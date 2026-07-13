@@ -1,394 +1,215 @@
 <!doctype html>
 <html lang="id">
-
 <head>
-
-  <meta charset="UTF-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>NIAGA AI</title>
-
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="NiagaAI — Asisten AI branding UMKM hasil laut Aceh.">
+  <title>NiagaAI — Laot Niaga</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
   <link rel="stylesheet" href="assets/css/custom.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
-
   <style>
-    body {
-
-      background: #16215c;
-
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      overflow: hidden;
-
-    }
-
-    /*================ NAVBAR ================*/
-
-    .ai-navbar {
-
-      height: 72px;
-
-      background: white;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      padding: 0 28px;
-
-    }
-
-    .brand-logo {
-
-      height: 42px;
-
-    }
-
-    .search-ai {
-
-      width: 260px;
-
-      height: 40px;
-
-      background: #EEF2FF;
-
-      border-radius: 30px;
-
-      display: flex;
-
-      align-items: center;
-
-      padding: 0 15px;
-
-      gap: 10px;
-
-    }
-
-    .search-ai input {
-
-      border: none;
-
-      background: transparent;
-
-      width: 100%;
-
-      outline: none;
-
-    }
-
-    .nav-right {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 15px;
-
-    }
-
-    .nav-icon {
-
-      width: 40px;
-
-      height: 40px;
-
-      border-radius: 50%;
-
-      display: flex;
-
-      justify-content: center;
-
-      align-items: center;
-
-      border: 2px solid #16215c;
-
-      color: #16215c;
-
-      text-decoration: none;
-
-      transition: .3s;
-
-    }
-
-    .nav-icon:hover {
-
-      background: #16215c;
-
-      color: white;
-
-    }
-
-    /*================ CONTENT ================*/
-
-    .ai-container {
-
-      padding: 20px;
-
-      height: calc(100vh - 72px);
-
-    }
-
-    .ai-card {
-
-      background: linear-gradient(180deg, #313B8F, #5B5FA5);
-
-      height: 100%;
-
-      border-radius: 24px;
-
-      padding: 25px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      position: relative;
-
-      overflow: hidden;
-
-    }
-
-    .back-btn {
-
-      color: white;
-
-      text-decoration: none;
-
-      font-weight: 600;
-
-      margin-bottom: 15px;
-
-      display: inline-flex;
-
-      gap: 8px;
-
-      align-items: center;
-
-    }
-
-    .logo-ai {
-
-      display: flex;
-
-      justify-content: center;
-
-      margin-top: 10px;
-
-      margin-bottom: 15px;
-
-    }
-
-    .logo-ai img {
-
-      height: 52px;
-
-    }
-
-    .ai-title {
-
-      color: white;
-
-      text-align: center;
-
-      font-size: 15px;
-
-      max-width: 700px;
-
-      margin: auto;
-
-      line-height: 1.5;
-
-      opacity: .95;
-
-    }
+    .niagai-layout { height:calc(100vh - 64px); display:flex; flex-direction:column; background:var(--bg-hero); position:relative; overflow:hidden; }
+    .niagai-layout::before { content:''; position:absolute; inset:0; background:url('assets/img/lautpantai.png') center/cover no-repeat; opacity:.06; }
+    .niagai-layout .orb1 { position:absolute; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(21,101,192,.25),transparent 70%); top:-100px; right:-100px; animation:orbFloat 15s ease-in-out infinite; }
+    .niagai-layout .orb2 { position:absolute; width:350px; height:350px; border-radius:50%; background:radial-gradient(circle,rgba(249,168,37,.12),transparent 70%); bottom:-80px; left:-80px; animation:orbFloat 20s ease-in-out infinite reverse; }
+    .niagai-header { padding:16px 24px; position:relative; z-index:2; border-bottom:1px solid rgba(255,255,255,.1); display:flex; align-items:center; gap:16px; }
+    .niagai-messages { flex:1; overflow-y:auto; padding:24px; display:flex; flex-direction:column; gap:16px; position:relative; z-index:2; scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.2) transparent; }
+    .niagai-input { padding:16px 24px; position:relative; z-index:2; border-top:1px solid rgba(255,255,255,.1); }
+    .niagai-bubble-ai { background:linear-gradient(135deg,var(--yellow),#ff9800); color:var(--navy-dark); border-radius:4px 20px 20px 20px; padding:14px 18px; max-width:560px; font-size:.9rem; line-height:1.7; box-shadow:0 4px 20px rgba(249,168,37,.25); animation:msgIn .3s var(--ease); }
+    .niagai-bubble-user { background:rgba(255,255,255,.15); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.2); color:#fff; border-radius:20px 4px 20px 20px; padding:12px 16px; max-width:480px; font-size:.88rem; line-height:1.6; animation:msgIn .3s var(--ease); align-self:flex-end; }
+    .niagai-input-box { background:rgba(255,255,255,.12); backdrop-filter:blur(12px); border:1.5px solid rgba(255,255,255,.2); border-radius:var(--r-2xl); display:flex; align-items:center; gap:10px; padding:8px 8px 8px 20px; transition:var(--t); }
+    .niagai-input-box:focus-within { border-color:var(--yellow); box-shadow:0 0 0 3px rgba(249,168,37,.15); }
+    .niagai-input-box input { flex:1; background:transparent; border:none; outline:none; color:#fff; font-size:.95rem; }
+    .niagai-input-box input::placeholder { color:rgba(255,255,255,.5); }
+    .niagai-send { width:46px; height:46px; border-radius:var(--r-full); background:linear-gradient(135deg,var(--yellow),#ff9800); border:none; color:var(--navy-dark); font-size:1.1rem; display:flex; align-items:center; justify-content:center; transition:var(--t); flex-shrink:0; }
+    .niagai-send:hover { transform:scale(1.08); }
+    .quick-grid { display:flex; gap:8px; flex-wrap:wrap; }
+    .niagai-quick { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); backdrop-filter:blur(8px); border-radius:var(--r-full); padding:8px 16px; font-size:.8rem; font-weight:600; color:#fff; cursor:pointer; transition:var(--t); }
+    .niagai-quick:hover { background:var(--yellow); color:var(--navy-dark); border-color:var(--yellow); }
   </style>
-
 </head>
-
 <body>
+<div class="noise-bg"></div><div class="noise-layer" id="noiseLayer"></div>
 
-  <div class="ai-navbar">
-
-    <a href="marketplace.html">
-
-      <img src="assets/img/logo biru.png" class="brand-logo">
-
-    </a>
-
-    <div class="search-ai">
-
-      <i class="bi bi-search"></i>
-
-      <input placeholder="Cari">
-
+<!-- Navbar -->
+<nav class="ln-navbar" style="background:rgba(8,18,63,.85)!important;border-bottom-color:rgba(255,255,255,.08)">
+  <div class="container"><div class="d-flex align-items-center gap-3 py-2">
+    <a href="index.html"><img class="brand-logo" src="assets/img/logo biru.png" alt="Laot Niaga"></a>
+    <div class="ms-auto d-flex gap-2">
+      <button class="theme-toggle" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.8)"></button>
+      <a href="marketplace.html" class="icon-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.8)"><i class="bi bi-shop"></i></a>
+      <a href="cart.html" class="icon-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.8)"><i class="bi bi-basket2"></i></a>
+      <a href="profile.html" class="icon-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.8)"><i class="bi bi-person"></i></a>
     </div>
+  </div></div>
+</nav>
 
-    <div class="nav-right">
+<div class="niagai-layout">
+  <div class="orb1"></div><div class="orb2"></div>
 
-      <a href="marketplace.html" class="nav-icon">
-
-        <i class="bi bi-shop"></i>
-
-      </a>
-
-      <a href="cart.html" class="nav-icon">
-
-        <i class="bi bi-basket"></i>
-
-      </a>
-
-      <a href="dashboard-umkm.html" class="nav-icon">
-
-        <i class="bi bi-person"></i>
-
-      </a>
-
+  <!-- Header -->
+  <div class="niagai-header">
+    <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--yellow),#ff9800);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🤖</div>
+    <div>
+      <div class="fw-800 text-white fs-6">NiagaAI</div>
+      <div style="font-size:.72rem;color:rgba(255,255,255,.65)">🟢 Asisten AI aktif · Siap membantu branding UMKM Anda</div>
     </div>
-
+    <div class="ms-auto" style="max-width:420px">
+      <p class="mb-0 text-center" style="font-size:.8rem;color:rgba(255,255,255,.7);line-height:1.5">Buat nama merek, slogan, deskripsi produk, caption IG, dan strategi pemasaran khusus UMKM hasil laut</p>
+    </div>
   </div>
 
-  <div class="ai-container">
-
-    <div class="ai-card">
-
-      <a href="marketplace.html" class="back-btn">
-
-        <i class="bi bi-chevron-left"></i>
-
-        Kembali
-
-      </a>
-
-      <div class="logo-ai">
-
-        <img src="assets/img/lopgo laot niaga.png">
-
+  <!-- Messages -->
+  <div class="niagai-messages" id="niagaMessages">
+    <div class="d-flex gap-3">
+      <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem">🤖</div>
+      <div class="niagai-bubble-ai">
+        <strong>Halo! Saya NiagaAI 🌊</strong><br><br>
+        Saya asisten kecerdasan buatan khusus untuk UMKM hasil laut Aceh. Saya bisa membantu Anda:<br><br>
+        ✨ <strong>Nama Merek</strong> — Nama yang menarik & mudah diingat<br>
+        🎯 <strong>Slogan</strong> — Kalimat singkat yang kuat & berkesan<br>
+        📝 <strong>Deskripsi Produk</strong> — Teks profesional untuk marketplace<br>
+        📸 <strong>Caption Instagram</strong> — Konten yang viral & engaging<br>
+        📊 <strong>Strategi Pemasaran</strong> — Tips meningkatkan penjualan<br><br>
+        Ceritakan produk Anda dan saya akan bantu buat brandingnya! 🐟
       </div>
-
-      <p class="ai-title">
-
-        Tidak menemukan yang Anda cari?
-
-        Tanyakan kepada NIAGA AI untuk membuat logo,
-
-        deskripsi produk,
-
-        identitas brand,
-
-        konten promosi,
-
-        dan solusi kreatif lainnya
-
-        yang sesuai kebutuhan UMKM Anda.
-
-      </p>
-
-      <div id="chatBox">
-
-      </div>
-      <div class="chat-area" id="chatArea">
-
-        <div class="ai-message">
-
-          <div class="ai-avatar">
-
-            <img src="assets/img/logo biru.png">
-
-          </div>
-
-          <div class="bubble-ai">
-
-            Halo 👋<br>
-
-            Saya NIAGA AI.
-
-            Saya siap membantu membuat
-
-            nama usaha,
-
-            slogan,
-
-            deskripsi produk,
-
-            ide kemasan,
-
-            caption Instagram,
-
-            hingga strategi pemasaran UMKM Anda.
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="quick-prompt">
-
-        <button class="quick-btn">
-
-          ✨ Nama Produk
-
-        </button>
-
-        <button class="quick-btn">
-
-          🎯 Slogan
-
-        </button>
-
-        <button class="quick-btn">
-
-          🖼 Logo
-
-        </button>
-
-        <button class="quick-btn">
-
-          📝 Deskripsi
-
-        </button>
-
-        <button class="quick-btn">
-
-          📢 Caption IG
-
-        </button>
-
-      </div>
-
-      <div class="input-box">
-
-        <input id="chatInput" type="text" placeholder="Tanyakan sesuatu kepada NIAGA AI...">
-
-        <button id="sendBtn">
-
-          <i class="bi bi-send-fill"></i>
-
-        </button>
-
-      </div>
-
     </div>
 
+    <!-- Quick prompts -->
+    <div class="quick-grid ms-12" style="padding-left:52px">
+      <button class="niagai-quick" data-prompt="Buatkan nama merek untuk produk keumamah ikan tongkol asal Aceh">✨ Nama Merek Keumamah</button>
+      <button class="niagai-quick" data-prompt="Buat slogan untuk usaha abon ikan laut khas Aceh">🎯 Slogan Abon Ikan</button>
+      <button class="niagai-quick" data-prompt="Buat deskripsi produk kerupuk ikan pesisir yang menarik untuk marketplace">📝 Deskripsi Kerupuk Ikan</button>
+      <button class="niagai-quick" data-prompt="Buatkan caption Instagram untuk promosi terasi udang premium">📢 Caption Terasi IG</button>
+      <button class="niagai-quick" data-prompt="Berikan strategi pemasaran digital untuk UMKM ikan asin Aceh">📊 Strategi Pemasaran</button>
+    </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Input -->
+  <div class="niagai-input">
+    <div class="niagai-input-box">
+      <input type="text" id="niagaInput" placeholder="Tanyakan sesuatu tentang branding UMKM hasil laut Anda...">
+      <button class="niagai-send" id="niagaSend"><i class="bi bi-send-fill"></i></button>
+    </div>
+    <div class="text-center mt-2" style="font-size:.72rem;color:rgba(255,255,255,.4)">NiagaAI dapat membuat kesalahan. Periksa informasi penting.</div>
+  </div>
+</div>
 
-  <script src="js/api.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script><script src="js/cart.js"></script><script src="js/theme.js"></script>
+<script>
+const messagesEl = document.getElementById('niagaMessages');
 
-  <script src="js/ai.js"></script>
+function appendUserMsg(text) {
+  const div = document.createElement('div');
+  div.style.cssText = 'display:flex;justify-content:flex-end';
+  div.innerHTML = `<div class="niagai-bubble-user">${text}</div>`;
+  messagesEl.appendChild(div);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
 
-</body>
+function appendAIMsg(html) {
+  const div = document.createElement('div');
+  div.className = 'd-flex gap-3';
+  div.innerHTML = `<div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;margin-top:4px">🤖</div>
+    <div class="niagai-bubble-ai">${html}</div>`;
+  messagesEl.appendChild(div);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return div;
+}
 
-</html>
+function appendTyping() {
+  const div = document.createElement('div');
+  div.className = 'd-flex gap-3';
+  div.id = 'typingBubble';
+  div.innerHTML = `<div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem">🤖</div>
+    <div class="niagai-bubble-ai"><div class="typing-indicator" style="--typing-color:#0c1b5e"><span style="background:var(--navy)"></span><span style="background:var(--navy)"></span><span style="background:var(--navy)"></span></div></div>`;
+  messagesEl.appendChild(div);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return div;
+}
+
+function formatAIReply(text) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n/g, '<br>')
+    .replace(/#{1,3} (.*)/g, '<strong style="font-size:1rem">$1</strong>');
+}
+
+function buildFallbackReply(prompt) {
+  const p = prompt.toLowerCase();
+
+  if (p.includes('nama') || p.includes('merek') || p.includes('brand')) {
+    const product = p.includes('keumamah')?'Keumamah':p.includes('abon')?'Abon Ikan':p.includes('kerupuk')?'Kerupuk Ikan':p.includes('terasi')?'Terasi':p.includes('asin')?'Ikan Asin':'Produk Laut';
+    return `<strong>🏷️ Rekomendasi Nama Merek untuk ${product}:</strong><br><br>
+    1. <strong>Laot Rasa</strong> — Rasa autentik dari laut Aceh<br>
+    2. <strong>Pesisir Sejati</strong> — Keaslian produk pesisir<br>
+    3. <strong>Bahari Select</strong> — Pilihan produk laut premium<br>
+    4. <strong>Samudra Cita</strong> — Citarasa dari samudra<br>
+    5. <strong>Aceh Marine</strong> — Identitas maritim Aceh yang kuat<br><br>
+    <strong>💡 Tips Memilih Nama Merek:</strong><br>
+    • Mudah diingat dan diucapkan<br>
+    • Mencerminkan identitas produk<br>
+    • Unik dan belum digunakan brand lain<br>
+    • Cocok untuk semua platform digital`;
+  }
+
+  if (p.includes('slogan')) {
+    return `<strong>🎯 Pilihan Slogan UMKM Hasil Laut:</strong><br><br>
+    1. <em>"Dari laut ke meja makan Anda, dengan penuh cinta nelayan."</em><br>
+    2. <em>"Kualitas laut, cita rasa yang tak terlupakan."</em><br>
+    3. <em>"Fresher from the sea, straighter to your heart."</em><br>
+    4. <em>"Laot kami, rasa kami — tradisi yang terjaga."</em><br>
+    5. <em>"Nikmati laut, dukung nelayan lokal."</em><br><br>
+    <strong>💡 Slogan terbaik</strong> adalah yang singkat (max 8 kata), mudah diingat, dan menyentuh emosi pembeli!`;
+  }
+
+  if (p.includes('deskripsi') || p.includes('caption') && p.includes('ig') || p.includes('instagram')) {
+    const isCaption = p.includes('caption') || p.includes('ig') || p.includes('instagram');
+    if (isCaption) return `<strong>📢 Caption Instagram yang Viral:</strong><br><br>
+    🌊 <em>"Rasa laut yang sesungguhnya ada di sini! Dibuat langsung oleh nelayan lokal Aceh dengan teknik tradisional yang higienis. Setiap gigitan adalah bentuk dukungan untuk UMKM kita. 🐟❤️</em><br><br>
+    <em>Pesan sekarang sebelum kehabisan! Link di bio 👆"</em><br><br>
+    <strong>Hashtag Rekomendasi:</strong><br>
+    #ProdukLautAceh #UMKMIndonesia #LaotNiaga #MakananSehat #HalalfoodIndonesia #NelayanLokal #OlahanLaut #KulinerAceh #ProdukLokal #SupportLokal`;
+  }
+  return `<strong>Terima kasih atas pertanyaannya! 😊</strong><br><br>
+  Saya NiagaAI, siap membantu branding UMKM hasil laut Aceh Anda.<br><br>
+  Coba tanyakan hal spesifik seperti:<br>
+  • "Buatkan nama merek untuk [produk] saya"<br>
+  • "Buat slogan untuk usaha [jenis usaha] saya"<br>
+  • "Buatkan deskripsi produk untuk [nama produk]"<br>
+  • "Caption Instagram untuk promosi [produk]"<br>
+  • "Strategi pemasaran untuk UMKM [jenis]"<br><br>
+  Semakin detail pertanyaan Anda, semakin akurat rekomendasi saya! 🎯`;
+}
+
+async function sendMessage() {
+  const input = document.getElementById('niagaInput');
+  const text = input.value.trim();
+  if (!text) return;
+
+  appendUserMsg(text);
+  input.value = '';
+
+  const typing = appendTyping();
+  try {
+    const reply = await askNiagaAI(text);
+    typing.remove();
+    appendAIMsg(formatAIReply(reply));
+  } catch {
+    typing.remove();
+    appendAIMsg(buildFallbackReply(text));
+  }
+}
+
+document.getElementById('niagaSend')?.addEventListener('click', sendMessage);
+document.getElementById('niagaInput')?.addEventListener('keypress', e => { if (e.key==='Enter') sendMessage(); });
+document.querySelectorAll('.niagai-quick').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('niagaInput').value = btn.dataset.prompt;
+    sendMessage();
+  });
+});
+</script>
+</body></html>

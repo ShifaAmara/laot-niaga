@@ -1,186 +1,31 @@
-/* ==========================================
-   LAOT NIAGA
-   AUTH.JS
-========================================== */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    initLogin();
-
-    initRegister();
-
-    initLogout();
-
-    protectDashboard();
-
-});
-
-/* ==========================================
-    LOGIN
-========================================== */
-
-function initLogin() {
-
-    const form = document.querySelector("[data-login-form]");
-
-    if (!form) return;
-
-    form.addEventListener("submit", async (e) => {
-
-        e.preventDefault();
-
-        const formData = new FormData(form);
-
-        const email = formData.get("email");
-
-        const password = formData.get("password");
-
-        try {
-
-            const data = await login(email, password);
-
-            saveSession(data);
-
-            alert("Login Berhasil");
-
-            if (data.user.role === "umkm") {
-
-                location.href = "dashboard-umkm.html";
-
-            } else {
-
-                location.href = "marketplace.html";
-
-            }
-
-        } catch (err) {
-
-            alert(err.message);
-
-        }
-
-    });
-
-}
-
-/* ==========================================
-    REGISTER
-========================================== */
-
-function initRegister() {
-
-    const form = document.querySelector("[data-register-form]");
-
-    if (!form) return;
-
-    form.addEventListener("submit", async (e) => {
-
-        e.preventDefault();
-
-        const payload = Object.fromEntries(
-
-            new FormData(form)
-
-        );
-
-        try {
-
-            const data = await register(payload);
-
-            saveSession(data);
-
-            alert("Registrasi Berhasil");
-
-            if (payload.role === "umkm") {
-
-                location.href = "dashboard-umkm.html";
-
-            } else {
-
-                location.href = "marketplace.html";
-
-            }
-
-        } catch (err) {
-
-            alert(err.message);
-
-        }
-
-    });
-
-}
-
-/* ==========================================
-    LOGOUT
-========================================== */
-
-function initLogout() {
-
-    document
-
-        .querySelectorAll("[data-logout]")
-
-        .forEach(btn => {
-
-            btn.addEventListener("click", () => {
-
-                logout();
-
-            });
-
-        });
-
-}
-
-/* ==========================================
-    CEK LOGIN DASHBOARD
-========================================== */
-
-function protectDashboard() {
-
-    if (!document.body.dataset.dashboard) return;
-
-    const user = getUser();
-
-    if (!user) {
-
-        location.href = "login.html";
-
-        return;
-
-    }
-
-    if (user.role !== "umkm") {
-
-        alert("Akses ditolak");
-
-        location.href = "marketplace.html";
-
-    }
-
-}
-
-/* ==========================================
-    USER INFO
-========================================== */
-
+/* ============================================================
+   LAOT NIAGA — AUTH.JS v2 | Alias compat layer
+   Logika login/register sudah ada di login.html & register.html
+   File ini hanya menjaga kompatibilitas backward
+   ============================================================ */
+
+// Alias fungsi lama → fungsi baru di api.js
+const login    = (email, password) => loginApi(email, password);
+const register = payload => registerApi(payload);
+
+// Backward compat showUser (sudah ada di theme.js updateNavAuth)
 function showUser() {
-
-    const user = getUser();
-
-    if (!user) return;
-
-    document
-
-        .querySelectorAll("[data-user-name]")
-
-        .forEach(el => {
-
-            el.textContent = user.store_name || user.name;
-
-        });
-
+  const user = getUser();
+  if (!user) return;
+  document.querySelectorAll('[data-user-name]').forEach(el => {
+    el.textContent = user.store_name || user.name || 'Pengguna';
+  });
 }
 
-showUser();
+// Backward compat protectDashboard
+function protectDashboard() {
+  if (!document.body.dataset.dashboard) return;
+  const user = getUser();
+  if (!user) { location.href = 'login.html'; return; }
+  if (user.role !== 'umkm') { location.href = 'marketplace.html'; }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  showUser();
+  protectDashboard();
+});
