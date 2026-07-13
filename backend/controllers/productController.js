@@ -1,7 +1,9 @@
 const pool = require("../config/db");
+const { uploadToImgBB } = require("../utils/imgbb");
 
+// Helper if fallback local upload is still somehow used, though unlikely with memory storage
 function productImagePath(file) {
-  return file ? `/uploads/${file.filename}` : null;
+  return file ? `/uploads/${file.originalname}` : null; // Won't be saved here anymore, just fallback
 }
 
 exports.getProducts = async (req, res) => {
@@ -83,6 +85,12 @@ exports.createProduct = async (req, res) => {
       return res.status(400).json({ message: "Nama, kategori, harga, dan stok wajib diisi." });
     }
 
+    let imageUrl = null;
+    if (req.file) {
+      // Upload ke ImgBB
+      imageUrl = await uploadToImgBB(req.file.buffer, req.file.originalname);
+    }
+
     const [result] = await pool.query(
       `INSERT INTO products
        (seller_id, name, category, price, stock, unit, description, origin, ingredients, production_method, expiry_info, image)
@@ -99,7 +107,7 @@ exports.createProduct = async (req, res) => {
         ingredients || null,
         production_method || null,
         expiry_info || null,
-        productImagePath(req.file)
+        imageUrl
       ]
     );
 
@@ -137,7 +145,11 @@ exports.updateProduct = async (req, res) => {
     };
 
     if (req.file) {
-      fields.image = productImagePath(req.file);
+       // Upload ke ImgBB
+      const imageUrl = await uploadToImgBB(req.file.buffer, req.file.originalname);
+      if(imageUrl) {
+        fields.image = imageUrl;
+      }
     }
 
     const setClauses = [];

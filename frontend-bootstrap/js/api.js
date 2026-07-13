@@ -4,8 +4,11 @@
    Mode demo otomatis aktif jika backend tidak terhubung.
    ============================================================ */
 
-const API_URL    = 'http://localhost:5000/api';
-const UPLOAD_URL = 'http://localhost:5000';
+// Ganti URL ini dengan URL Backend kamu nanti (contoh: 'https://laot-niaga-api.onrender.com/api')
+// Biarkan 'http://localhost:5000/api' jika masih testing di komputer lokal (XAMPP)
+const API_URL    = 'http://localhost:5000/api'; 
+const UPLOAD_URL = 'http://localhost:5000'; // Akan tidak digunakan jika pakai ImgBB
+
 
 /* ─── Demo Data ─────────────────────────────────────────────── */
 const DEMO_PRODUCTS = [

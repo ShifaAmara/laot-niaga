@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const pool = require("../config/db");
+const { uploadToImgBB } = require("../utils/imgbb");
 
 function createToken(user) {
   return jwt.sign(
@@ -97,7 +98,14 @@ exports.updateProfile = async (req, res) => {
     if (address)    fields.address    = address;
     if (story)      fields.story      = story;
     if (store_name) fields.store_name = store_name;
-    if (req.file)   fields.avatar     = `/uploads/${req.file.filename}`;
+    
+    if (req.file) {
+      // Upload avatar ke ImgBB
+      const avatarUrl = await uploadToImgBB(req.file.buffer, req.file.originalname);
+      if (avatarUrl) {
+        fields.avatar = avatarUrl;
+      }
+    }
 
     if (!Object.keys(fields).length)
       return res.json({ message: "Tidak ada perubahan yang disimpan." });

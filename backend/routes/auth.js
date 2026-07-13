@@ -6,13 +6,8 @@ const auth = require("../middleware/auth");
 
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination: (_req, _file, cb) => cb(null, path.join(__dirname, "../uploads")),
-  filename: (_req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    cb(null, `avatar-${Date.now()}${ext}`);
-  }
-});
+// Gunakan MemoryStorage untuk upload avatar ke Cloud (ImgBB)
+const storage = multer.memoryStorage();
 const upload = multer({ storage, limits: { fileSize: 2 * 1024 * 1024 } });
 
 router.post("/register",         authController.register);
