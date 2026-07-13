@@ -49,8 +49,12 @@ app.use((err, _req, res, _next) => {
   res.status(err.status || 400).json({ message: err.message || "Terjadi kesalahan pada server." });
 });
 
-app.listen(port, () => {
-  console.log(`\n🌊 Laot Niaga API v2 berjalan di http://localhost:${port}`);
-  console.log(`   Mode: ${process.env.NODE_ENV || "development"}`);
-  console.log(`   DB  : ${process.env.DB_NAME}@${process.env.DB_HOST}\n`);
-});
+if (process.env.NODE_ENV !== "production" && !process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`\n🌊 Laot Niaga API v2 berjalan di http://localhost:${port}`);
+    console.log(`   Mode: ${process.env.NODE_ENV || "development"}`);
+    console.log(`   DB  : ${process.env.DB_NAME}@${process.env.DB_HOST}\n`);
+  });
+}
+
+module.exports = app;

@@ -4,10 +4,9 @@
    Mode demo otomatis aktif jika backend tidak terhubung.
    ============================================================ */
 
-// Ganti URL ini dengan URL Backend kamu nanti (contoh: 'https://laot-niaga-api.onrender.com/api')
-// Biarkan 'http://localhost:5000/api' jika masih testing di komputer lokal (XAMPP)
-const API_URL    = 'http://localhost:5000/api'; 
-const UPLOAD_URL = 'http://localhost:5000'; // Akan tidak digunakan jika pakai ImgBB
+// API_URL menggunakan '/api' karena Vercel akan otomatis menyatukan frontend dan backend
+const API_URL    = '/api'; 
+const UPLOAD_URL = ''; // Tidak digunakan jika pakai ImgBB
 
 
 /* ─── Demo Data ─────────────────────────────────────────────── */
