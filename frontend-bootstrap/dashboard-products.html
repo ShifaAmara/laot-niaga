@@ -38,7 +38,7 @@
   <div class="dash-content">
     <div class="dash-header reveal">
       <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-        <div><div class="section-label">Manajemen Produk</div><h1 class="section-title">Kelola Produk 📦</h1></div>
+        <div><div class="section-label">Manajemen Produk</div><h1 class="section-title">Kelola Produk </h1></div>
         <button class="btn btn-laot px-4 fw-700" data-bs-toggle="modal" data-bs-target="#addProductModal">
           <i class="bi bi-plus-lg me-2"></i>Tambah Produk
         </button>
@@ -221,7 +221,7 @@ function renderTable() {
   </tr>`).join('');
 }
 
-function editProduct(id) { showToast('Fitur edit akan segera hadir ✏️','info'); }
+function editProduct(id) { showToast('Fitur edit akan segera hadir ','info'); }
 function deleteProduct(id) {
   if (!confirm('Yakin hapus produk ini?')) return;
   products = products.filter(p=>p.id!==id);

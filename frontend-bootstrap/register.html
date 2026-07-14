@@ -41,7 +41,7 @@
         <div class="col-6">
           <div class="payment-option h-100" data-role="umkm" onclick="selectRole('umkm')">
             <div class="text-center w-100">
-              <div style="font-size:2rem">🏪</div>
+              <div style="font-size:2rem"></div>
               <div class="fw-700 mt-1">Penjual / UMKM</div>
               <div style="font-size:.75rem;color:var(--text-muted)">Jual produk lautmu</div>
             </div>
@@ -160,13 +160,13 @@ document.getElementById('registerForm').addEventListener('submit', async e => {
   try {
     const data = await registerApi(payload);
     saveSession(data);
-    showToast('Akun berhasil dibuat! 🎉','success');
+    showToast('Akun berhasil dibuat! ','success');
     setTimeout(() => location.href = role==='umkm' ? 'dashboard.html' : 'marketplace.html', 900);
   } catch(err) {
     // Demo fallback
     const user = { id: Date.now(), ...payload, store_name: payload.store_name || payload.name };
     saveSession({ token:'demo-'+Date.now(), user });
-    showToast('Akun berhasil dibuat! 🎉','success');
+    showToast('Akun berhasil dibuat! ','success');
     setTimeout(() => location.href = role==='umkm' ? 'dashboard.html' : 'marketplace.html', 900);
   }
 });

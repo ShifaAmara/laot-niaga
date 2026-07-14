@@ -103,7 +103,7 @@
           <button class="btn btn-laot w-100 mt-3 py-2 fw-700" onclick="doCheckout()">
             <i class="bi bi-shield-check me-2"></i>Pesan Sekarang
           </button>
-          <p class="text-center mt-2" style="font-size:.75rem;color:var(--text-muted)">🔒 Transaksi aman & terenkripsi</p>
+          <p class="text-center mt-2" style="font-size:.75rem;color:var(--text-muted)">Transaksi aman & terenkripsi</p>
         </div>
       </div>
     </div>
@@ -162,13 +162,13 @@ async function doCheckout() {
   try {
     await createOrder(payload);
     clearCart();
-    showToast('Pesanan berhasil dibuat! 🎉','success');
+    showToast('Pesanan berhasil dibuat! ','success');
     setTimeout(()=>location.href='orders.html',1200);
   } catch(e) {
     // Demo mode: simulate success
     clearCart();
     localStorage.setItem('lastOrder',JSON.stringify({id:'LN'+Date.now(), ...payload, status:'process'}));
-    showToast('Pesanan berhasil dibuat! 🎉','success');
+    showToast('Pesanan berhasil dibuat! ','success');
     setTimeout(()=>location.href='orders.html',1200);
   }
 }

@@ -43,10 +43,10 @@
     <!-- Status tabs -->
     <div class="cat-scroll mb-4 reveal">
       <button class="cat-chip active" data-status="">Semua <span id="tabAll" class="badge rounded-pill ms-1" style="background:var(--ocean);color:#fff;font-size:.65rem">3</span></button>
-      <button class="cat-chip" data-status="new">🆕 Baru</button>
-      <button class="cat-chip" data-status="process">⚙️ Diproses</button>
-      <button class="cat-chip" data-status="ship">🚚 Dikirim</button>
-      <button class="cat-chip" data-status="done">✅ Selesai</button>
+      <button class="cat-chip" data-status="new">Baru</button>
+      <button class="cat-chip" data-status="process">Diproses</button>
+      <button class="cat-chip" data-status="ship">Dikirim</button>
+      <button class="cat-chip" data-status="done">Selesai</button>
     </div>
 
     <!-- Orders -->
@@ -78,7 +78,7 @@ const SELLER_ORDERS = [
   { id:'LN2024004', date:'26 Nov 2024 11:30', buyer:'Dian Sari', phone:'082345678901', address:'Jl. Diponegoro No. 3, Medan', status:'new', courier:'JNE', resi:'-', total:90000, items:[{name:'Keumamah Premium',qty:2,price:45000,img:'assets/img/keumamah.jpg'}] },
 ];
 
-const statusMap = { new:'🆕 Pesanan Baru', process:'⚙️ Diproses', ship:'🚚 Dikirim', done:'✅ Selesai' };
+const statusMap = { new:'Pesanan Baru', process:'Diproses', ship:'Dikirim', done:'Selesai' };
 const badgeMap = { new:'badge-status-new', process:'badge-status-process', ship:'badge-status-ship', done:'badge-status-done' };
 let currentFilter = '';
 
@@ -89,7 +89,7 @@ function renderOrders() {
   const filtered = currentFilter ? SELLER_ORDERS.filter(o=>o.status===currentFilter) : SELLER_ORDERS;
   const list = document.getElementById('sellerOrdersList');
   if (!filtered.length) {
-    list.innerHTML=`<div class="text-center py-5"><div style="font-size:2.5rem">📭</div><h5 class="mt-3 fw-800">Tidak ada pesanan</h5></div>`;
+    list.innerHTML=`<div class="text-center py-5"><div style="font-size:2.5rem"></div><h5 class="mt-3 fw-800">Tidak ada pesanan</h5></div>`;
     return;
   }
   list.innerHTML = filtered.map(o=>`
