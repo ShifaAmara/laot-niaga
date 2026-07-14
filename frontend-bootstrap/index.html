@@ -472,14 +472,18 @@
     function sellerCard(s) {
       return `
     <div class="col-md-4 reveal">
-      <a href="seller-profile.html?seller=${s.id}" class="d-block glass-card p-4 text-center h-100" style="border-radius:var(--r-xl)">
-        <img src="${s.avatar}" class="rounded-circle mb-3" style="width:64px;height:64px;object-fit:cover;border:3px solid var(--yellow)" alt="${s.name}">
-        <div class="fw-800 fs-6">${s.name}</div>
-        <div style="font-size:.78rem;color:var(--text-muted)">${s.address}</div>
-        <div class="d-flex justify-content-center gap-3 mt-3">
-          <div><div class="fw-700" style="color:var(--ocean)">${s.products}</div><div style="font-size:.7rem;color:var(--text-muted)">Produk</div></div>
-          <div><div class="fw-700" style="color:var(--yellow)">★${s.rating}</div><div style="font-size:.7rem;color:var(--text-muted)">Rating</div></div>
-          <div><div class="fw-700" style="color:var(--teal)">${s.sold}+</div><div style="font-size:.7rem;color:var(--text-muted)">Terjual</div></div>
+      <a href="seller-profile.html?seller=${s.id}" class="d-block glass-card p-4 h-100" style="border-radius:var(--r-xl)">
+        <div class="d-flex align-items-center gap-3 mb-3 text-start">
+          <img src="${s.avatar}" class="rounded-circle flex-shrink-0" style="width:64px;height:64px;object-fit:cover;border:3px solid var(--yellow)" alt="${s.name}">
+          <div>
+            <div class="fw-800 fs-6">${s.name}</div>
+            <div style="font-size:.78rem;color:var(--text-muted)"><i class="bi bi-geo-alt-fill me-1" style="color:var(--ocean)"></i>${s.address}</div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between gap-2 border-top pt-3" style="border-color:var(--line)!important">
+          <div class="text-center"><div class="fw-700" style="color:var(--ocean)">${s.products}</div><div style="font-size:.7rem;color:var(--text-muted)">Produk</div></div>
+          <div class="text-center"><div class="fw-700" style="color:var(--yellow)">★${s.rating}</div><div style="font-size:.7rem;color:var(--text-muted)">Rating</div></div>
+          <div class="text-center"><div class="fw-700" style="color:var(--teal)">${s.sold}+</div><div style="font-size:.7rem;color:var(--text-muted)">Terjual</div></div>
         </div>
       </a>
     </div>`;
