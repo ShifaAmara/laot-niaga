@@ -30,7 +30,7 @@ function injectAIFloat() {
         <button class="ai-quick-btn" data-prompt="Rekomendasikan produk ikan terbaik">🐟 Rekomendasi</button>
         <button class="ai-quick-btn" data-prompt="Bantu saya buat nama merek UMKM laut">✨ Branding</button>
         <button class="ai-quick-btn" data-prompt="Produk apa yang paling laris di Laot Niaga?">🔥 Terlaris</button>
-        <button class="ai-quick-btn" data-prompt="Cara checkout dan pembayaran di Laot Niaga">🛒 Cara Beli</button>
+        <button class="ai-quick-btn" data-prompt="Cara checkout dan pembayaran di Laot Niaga"><i class="bi bi-cart"></i> Cara Beli</button>
       </div>
       <div class="ai-panel-input">
         <input type="text" id="aiInput" placeholder="Tanya sesuatu...">

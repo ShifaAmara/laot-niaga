@@ -146,14 +146,17 @@ function productCard(p) {
         <img class="card-img-top" src="${productImage(p)}" alt="${p.name}" loading="lazy">
       </a></div>
       <div class="card-body">
-        <div class="product-store">🏪 ${p.store_name}</div>
+        <div class="product-store"><i class="bi bi-shop me-1"></i>${p.store_name}</div>
         <a href="product-detail.html?id=${p.id}" class="product-name d-block">${p.name}</a>
         <div class="product-location"><i class="bi bi-geo-alt me-1"></i>${p.origin}</div>
         <div class="d-flex align-items-center gap-1 mt-1"><span class="star">★</span><span style="font-size:.72rem;color:var(--text-muted)">${p.rating} (${p.sold})</span></div>
         <div class="product-price mt-1">${rupiah(p.price)}<span style="font-size:.7rem;color:var(--text-muted);font-weight:500"> /${p.unit}</span></div>
-        <button class="btn-addcart" onclick="addToCart({id:${p.id},name:'${p.name.replace(/'/g,"\\'")}',price:${p.price},unit:'${p.unit}',image:'${productImage(p)}'})">
-          <i class="bi bi-cart-plus me-1"></i>Keranjang
-        </button>
+        <div class="d-flex gap-2 mt-auto pt-2">
+          <a href="product-detail.html?id=${p.id}" class="btn-buynow flex-fill">Beli</a>
+          <button class="btn-addcart flex-fill" onclick="addToCart({id:${p.id},name:'${p.name.replace(/'/g,"\\'")}',price:${p.price},unit:'${p.unit}',image:'${productImage(p)}'})">
+            <i class="bi bi-cart-plus me-1"></i>Keranjang
+          </button>
+        </div>
       </div>
     </div>
   </div>`;

@@ -13,7 +13,7 @@ function addToCart(product, qty = 1) {
   if (idx >= 0) cart[idx].qty = (cart[idx].qty || 1) + qty;
   else cart.push({ ...product, qty });
   saveCart(cart);
-  showToast(`${product.name} ditambahkan ke keranjang 🛒`, 'success');
+  showToast(`<i class="bi bi-cart-check-fill me-2" style="font-size:1.1rem;color:var(--teal)"></i>${product.name} ditambahkan ke keranjang`, 'success');
 }
 window.addToCart = addToCart;
 

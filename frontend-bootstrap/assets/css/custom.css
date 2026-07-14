@@ -224,10 +224,7 @@ button { cursor:pointer; }
   transition:var(--t); position:relative;
 }
 .icon-btn:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
-.icon-btn .badge-dot {
-  position:absolute; top:2px; right:2px; width:9px; height:9px;
-  background:var(--yellow); border-radius:50%; border:2px solid var(--bg-white);
-}
+
 
 /* Theme toggle */
 .theme-toggle {
@@ -903,10 +900,10 @@ button { cursor:pointer; }
 .icon-btn:hover { background:var(--ocean-pale); border-color:var(--ocean); color:var(--ocean); }
 .icon-btn.active { background:var(--ocean); border-color:var(--ocean); color:#fff; }
 .badge-dot {
-  position:absolute; top:-3px; right:-3px; width:18px; height:18px;
-  border-radius:50%; background:var(--yellow); color:var(--navy-dark);
-  font-size:.6rem; font-weight:800; display:flex; align-items:center; justify-content:center;
-  border:2px solid var(--card);
+  position:absolute; top:-4px; right:-4px; min-width:20px; height:20px;
+  border-radius:10px; background:var(--yellow); color:var(--navy-dark);
+  font-size:.65rem; font-weight:800; display:flex; align-items:center; justify-content:center;
+  border:2px solid var(--card); padding:0 4px; box-sizing:border-box;
 }
 
 /* Wishlist Button */
@@ -1026,10 +1023,11 @@ button { cursor:pointer; }
 .product-price-old { font-size:.78rem; font-weight:600; color:var(--text-muted); text-decoration:line-through; }
 .badge-discount { position:absolute; top:10px; left:10px; z-index:2; background:linear-gradient(135deg,#ef4444,#dc2626); color:#fff; border-radius:var(--r-full); font-size:.65rem; font-weight:800; padding:3px 8px; }
 .btn-addcart {
-  width:100%; margin-top:8px; padding:8px 12px; border:none;
-  border-radius:var(--r-full); font-size:.8rem; font-weight:700;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:100%; margin-top:8px; padding:7px 10px; border:1.5px solid transparent;
+  border-radius:var(--r-full); font-size:.78rem; font-weight:700;
   background:linear-gradient(135deg,var(--navy),var(--ocean));
-  color:#fff; transition:var(--t);
+  color:#fff; transition:var(--t); cursor:pointer;
 }
 .btn-addcart:hover { transform:translateY(-1px); box-shadow:0 4px 14px rgba(21,101,192,.3); }
 
