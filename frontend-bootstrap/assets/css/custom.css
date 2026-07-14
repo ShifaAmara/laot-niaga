@@ -1275,7 +1275,7 @@ button { cursor:pointer; }
 /* Dashboard navbar buttons - smaller on mobile */
 @media (max-width:768px) {
   .ln-navbar .btn-sm { padding:4px 10px; font-size:.75rem; }
-  .ln-navbar .btn.px-3 { padding-left:10px !important; padding-right:10px !important; }
+  .ln-navbar .btn.px-3 { padding-left:10px ; padding-right:10px !important; }
   .hero-product-wrap { width:280px; height:280px; }
   .circle-main { width:240px; height:240px; }
   .circle-sub { width:110px; height:110px; }
