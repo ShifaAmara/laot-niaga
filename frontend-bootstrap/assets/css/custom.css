@@ -10,7 +10,7 @@
 :root {
   /* Brand Colors */
   --navy:         #0c1b5e;
-  --navy-dark:    #08123f;
+  --navy-dark:    #2A3389;
   --navy-light:   #1a2f7a;
   --ocean:        #1565c0;
   --ocean-light:  #1e88e5;
@@ -184,7 +184,7 @@ button { cursor:pointer; }
   background: linear-gradient(135deg,var(--navy-dark),var(--navy-light));
   color:#fff; border:none; border-radius:var(--r-full);
   font-weight:700; transition:var(--t);
-  box-shadow: 0 3px 14px rgba(12,27,94,.25);
+  box-shadow: 0 3px 14px rgba(12,27,94,.25); 
 }
 .btn-navy:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(12,27,94,.35); color:#fff; }
 
@@ -467,7 +467,7 @@ button { cursor:pointer; }
   font-size:.75rem; font-weight:700; letter-spacing:.06em;
   text-transform:uppercase; color:var(--ocean); margin-bottom:8px;
 }
-.section-label::before { content:''; width:20px; height:2px; background:var(--yellow); border-radius:2px; }
+/* .section-label::before { content:''; width:20px; height:2px; background:var(--yellow); border-radius:2px; } */
 .section-title { font-size:clamp(1.5rem,3vw,2.2rem); font-weight:800; line-height:1.1; color:var(--text); }
 
 /* ─── 12. BREADCRUMB ───────────────────────────────────────── */
@@ -988,9 +988,9 @@ button { cursor:pointer; }
 .circle-sub img { width:100%; height:100%; object-fit:cover; }
 @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
 
-/* Section Labels */
+/* Section Labels 
 .section-label { display:inline-flex; align-items:center; gap:6px; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--ocean); background:var(--ocean-pale); border-radius:var(--r-full); padding:4px 12px; margin-bottom:6px; }
-.section-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.5rem,3vw,2rem); font-weight:800; color:var(--text); line-height:1.25; }
+.section-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(1.5rem,3vw,2rem); font-weight:800; color:var(--text); line-height:1.25; }*/
 
 /* Category Chips */
 .cat-scroll { display:flex; gap:10px; overflow-x:auto; scrollbar-width:none; padding-bottom:4px; }
