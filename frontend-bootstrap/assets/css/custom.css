@@ -72,7 +72,8 @@
 
 /* Dark mode */
 [data-theme="dark"] {
-  --navy:        #4a6fa5;
+  --navy:        #60a5fa;
+  --ocean-light: #93c5fd;
   --bg:          #0a0f1e;
   --bg-white:    #111827;
   --bg-soft:     #151e35;
@@ -81,9 +82,9 @@
   --glass-border:rgba(255,255,255,.07);
   --glass-border2:rgba(255,255,255,.12);
   --glass-shadow:0 8px 32px rgba(0,0,0,.35);
-  --text:        #e2e8f8;
-  --text-2:      #94a3cc;
-  --text-muted:  #5a6a9a;
+  --text:        #f8fafc;
+  --text-2:      #e2e8f0;
+  --text-muted:  #94a3b8;
   --card:        rgba(17,24,39,.8);
   --card-shadow: 0 2px 16px rgba(0,0,0,.25);
   --card-hover:  0 8px 32px rgba(0,0,0,.4);
@@ -294,7 +295,7 @@ button { cursor:pointer; }
   transition:var(--t); margin-top:8px;
 }
 .product-card .btn-addcart:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
-[data-theme="dark"] .product-card .btn-addcart { background:rgba(21,101,192,.15); color:var(--ocean-light); }
+
 
 /* Skeleton loading */
 .skeleton {
