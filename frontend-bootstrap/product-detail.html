@@ -36,7 +36,7 @@
 
 <footer class="ln-footer py-4 mt-5">
   <div class="container d-flex flex-wrap justify-content-between gap-3">
-    <span class="footer-brand">🌊 Laot Niaga</span>
+    <span class="footer-brand">Laot Niaga</span>
     <div class="d-flex gap-3"><a href="marketplace.html">Marketplace</a><a href="index.html">Beranda</a></div>
   </div>
 </footer>
@@ -124,20 +124,20 @@ function renderDetail(p) {
 
       <!-- Action Buttons -->
       <div class="d-flex gap-3 mb-4 flex-wrap">
-        <button class="btn btn-laot btn-lg px-4 fw-700" onclick="doBuyNow()"><i class="bi bi-lightning-fill me-2"></i>Beli Sekarang</button>
-        <button class="btn btn-navy btn-lg px-4 fw-700" onclick="doAddCart()"><i class="bi bi-cart-plus me-2"></i>Keranjang</button>
+        <button class="btn btn-laot btn-lg px-4 fw-700" onclick="doBuyNow()"><i ></i>Beli Sekarang</button>
+        <button class="btn btn-navy btn-lg px-4 fw-700" onclick="doAddCart()"><i ></i>Keranjang</button>
         <button class="icon-btn ${isWishlisted(p.id)?'active':''}" id="wlBtn" onclick="doWishlist()" title="Wishlist"><i class="bi bi-heart${isWishlisted(p.id)?'-fill':''}"></i></button>
       </div>
 
       <!-- Description -->
       <div class="panel p-4 mb-3">
-        <h5 class="fw-800 mb-3">📋 Deskripsi Produk</h5>
+        <h5 class="fw-800 mb-3">Deskripsi Produk</h5>
         <p style="color:var(--text-2);line-height:1.8;white-space:pre-line">${p.description}</p>
       </div>
 
       <!-- Detail Table -->
       <div class="panel p-4">
-        <h5 class="fw-800 mb-3">🔍 Informasi Detail</h5>
+        <h5 class="fw-800 mb-3">Informasi Detail</h5>
         <table class="table table-sm" style="--bs-table-bg:transparent">
           <tbody style="color:var(--text-2)">
             <tr><td class="fw-600" style="width:40%;color:var(--text-muted)">Kategori</td><td>${p.category}</td></tr>
@@ -192,7 +192,7 @@ function renderReviews() {
   ];
   const stars = n => '★'.repeat(n) + '☆'.repeat(5-n);
   document.getElementById('reviewSection').innerHTML = `
-  <h4 class="fw-800 mb-4">⭐ Ulasan Pembeli (${reviews.length})</h4>
+  <h4 class="fw-800 mb-4">Ulasan Pembeli (${reviews.length})</h4>
   <div class="row g-3">
     ${reviews.map(r=>`<div class="col-md-4"><div class="review-card h-100">
       <div class="d-flex gap-2 mb-2">
@@ -210,7 +210,7 @@ async function renderRelated(current) {
   const related = all.filter(p=>p.id!==current.id && p.category===current.category).slice(0,4);
   if (!related.length) return;
   document.getElementById('relatedSection').innerHTML = `
-  <h4 class="fw-800 mb-4">🔄 Produk Terkait</h4>
+  <h4 class="fw-800 mb-4">Produk Terkait</h4>
   <div class="row row-cols-2 row-cols-md-4 g-3">
     ${related.map(p=>`<div class="col"><div class="product-card">
       <div class="img-wrapper"><a href="product-detail.html?id=${p.id}"><img class="card-img-top" src="${productImage(p)}" alt="${p.name}" loading="lazy"></a></div>

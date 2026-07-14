@@ -18,10 +18,10 @@
   --teal:         #00897b;
   --teal-light:   #26a69a;
   --teal-pale:    #e0f2f1;
-  --yellow:       #f9a825;
-  --yellow-light: #ffc107;
+  --yellow:       #FCD53B;
+  --yellow-light: #FCD53B;
   --yellow-pale:  #fff8e1;
-  --yellow-glow:  rgba(249,168,37,.20);
+  --yellow-glow:  rgb(248, 230, 203);
 
   /* Backgrounds */
   --bg:           #f5f7fb;
@@ -166,7 +166,7 @@ button { cursor:pointer; }
 
 /* ─── 5. BUTTONS ───────────────────────────────────────────── */
 .btn-laot {
-  background: linear-gradient(135deg,var(--yellow) 0%,#f57c00 100%);
+  background: linear-gradient(135deg,var(--yellow) 0%,#FCD53B 100%);
   color: var(--navy-dark); font-weight:700; border:none;
   border-radius:var(--r-full);
   box-shadow: 0 3px 14px var(--yellow-glow);
@@ -289,7 +289,7 @@ button { cursor:pointer; }
 .product-card .product-price { font-size:1.1rem; font-weight:800; color:var(--navy); margin-top:6px; }
 [data-theme="dark"] .product-card .product-price { color:var(--yellow); }
 .product-card .product-price-old { font-size:.75rem; text-decoration:line-through; color:var(--text-muted); }
-.product-card .product-rating { font-size:.75rem; color:#f59e0b; }
+.product-card .product-rating { font-size:.75rem; color:#FCD53B; }
 .product-card .btn-addcart {
   width:100%; background:var(--ocean-pale); color:var(--ocean);
   border:1.5px solid rgba(21,101,192,.2); border-radius:var(--r-md);
@@ -453,11 +453,11 @@ button { cursor:pointer; }
 
 /* ─── 10. BADGE ────────────────────────────────────────────── */
 .badge-laot { background:var(--badge-blue)!important; color:var(--ocean)!important; font-weight:600; border:1px solid rgba(21,101,192,.15); }
-.badge-yellow { background:var(--badge-yellow)!important; color:#b45309!important; font-weight:600; }
+.badge-yellow { background:var(--badge-yellow)!important; color:#FCD53B!important; font-weight:600; }
 .badge-teal { background:var(--badge-teal)!important; color:var(--teal)!important; font-weight:600; }
 .badge-navy { background:var(--navy)!important; color:#fff!important; font-weight:600; }
 .badge-status-new { background:rgba(99,102,241,.12); color:#4f46e5; font-weight:700; }
-.badge-status-process { background:rgba(234,179,8,.12); color:#a16207; font-weight:700; }
+.badge-status-process { background:rgba(234,179,8,.12); color:#FCD53B; font-weight:700; }
 .badge-status-ship { background:rgba(14,165,233,.12); color:#0369a1; font-weight:700; }
 .badge-status-done { background:var(--badge-teal); color:var(--teal); font-weight:700; }
 
@@ -882,14 +882,14 @@ button { cursor:pointer; }
 .bg-teal-pale { background:var(--teal-pale)!important; }
 .fw-800 { font-weight:800!important; }
 .fw-700 { font-weight:700!important; }
-.star { color:#f59e0b; }
+.star { color:#FCD53B; }
 
 /* ─── 25. MISSING CRITICAL COMPONENTS ──────────────────────── */
 
 /* Badges */
 .badge-laot { background:var(--badge-blue,rgba(21,101,192,.12)); color:var(--ocean); font-size:.72rem; font-weight:700; padding:4px 10px; }
 .badge-teal  { background:var(--badge-teal,rgba(0,137,123,.12)); color:var(--teal); font-size:.72rem; font-weight:700; padding:4px 10px; }
-.badge-yellow { background:var(--badge-yellow,rgba(249,168,37,.15)); color:#92400e; font-size:.72rem; font-weight:700; padding:4px 10px; }
+.badge-yellow { background:var(--badge-yellow,rgba(249,168,37,.15)); color:#FCD53B; font-size:.72rem; font-weight:700; padding:4px 10px; }
 .badge-ocean { background:var(--ocean); color:#fff; }
 
 /* Icon Button */
@@ -1019,7 +1019,7 @@ button { cursor:pointer; }
 .product-card:hover .card-img-top, .product-card:hover .img-wrapper img { transform:scale(1.07); }
 .product-card .card-body { padding:12px 14px 14px; display:flex; flex-direction:column; flex:1; }
 .product-store { font-size:.7rem; color:var(--text-muted); font-weight:600; margin-bottom:3px; }
-.product-name { font-size:.88rem; font-weight:700; color:var(--text); line-height:1.35; margin-bottom:3px; text-decoration:none; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.product-name { font-size:.88rem; font-weight:700; color:var(--text); line-height:1.35; margin-bottom:3px; text-decoration:none; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2; overflow:hidden; }
 .product-name:hover { color:var(--ocean); }
 .product-location { font-size:.72rem; color:var(--text-muted); }
 .product-price { font-size:1rem; font-weight:800; color:var(--navy); margin-top:auto; }

@@ -12,7 +12,7 @@
 <nav class="ln-navbar">
   <div class="container"><div class="d-flex align-items-center gap-3 py-2">
     <a href="index.html"><img class="brand-logo" src="assets/img/logo biru.png" alt="Laot Niaga"></a>
-    <span class="fw-800 ms-2"><i class="bi bi-heart-fill text-danger me-2"></i>Wishlist Saya</span>
+    <span class="fw-800 ms-2"><i ></i>Wishlist Saya</span>
     <div class="ms-auto d-flex gap-2">
       <button class="theme-toggle"></button>
       <a href="cart.html" class="icon-btn"><i class="bi bi-basket2"></i><span class="badge-dot" data-cart-count style="display:none"></span></a>
@@ -32,7 +32,7 @@
 </main>
 
 <footer class="ln-footer py-4 mt-5">
-  <div class="container d-flex justify-content-between"><span class="footer-brand">🌊 Laot Niaga</span></div>
+  <div class="container d-flex justify-content-between"><span class="footer-brand"> Laot Niaga</span></div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -52,10 +52,10 @@ function renderWishlist() {
   count.textContent = `${wl.length} Produk Tersimpan`;
   if (!wl.length) {
     grid.innerHTML = `<div class="col-12 text-center py-5">
-      <div style="font-size:4rem">💔</div>
+      <div style="font-size:4rem"></div>
       <h4 class="mt-3 fw-800">Wishlist Kosong</h4>
       <p style="color:var(--text-muted)">Simpan produk favorit kamu di sini!</p>
-      <a href="marketplace.html" class="btn btn-laot px-4 mt-2">🐟 Jelajah Produk</a>
+      <a href="marketplace.html" class="btn btn-laot px-4 mt-2"> Jelajah Produk</a>
     </div>`;
     return;
   }

@@ -14,7 +14,7 @@
     <a href="index.html"><img class="brand-logo" src="assets/img/logo biru.png" alt="Laot Niaga"></a>
     <span class="fw-800 ms-2">Pesanan Saya</span>
     <div class="ms-auto d-flex gap-2"><button class="theme-toggle"></button>
-      <a href="marketplace.html" class="btn btn-laot btn-sm px-3">🐟 Belanja Lagi</a>
+      <a href="marketplace.html" class="btn btn-laot btn-sm px-3">Belanja Lagi</a>
     </div>
   </div></div>
 </nav>
@@ -24,23 +24,23 @@
     <!-- Filter Tabs -->
     <div class="cat-scroll mb-4 reveal">
       <button class="cat-chip active" data-status="">Semua</button>
-      <button class="cat-chip" data-status="process">⚙️ Diproses</button>
-      <button class="cat-chip" data-status="ship">🚚 Dikirim</button>
-      <button class="cat-chip" data-status="done">✅ Selesai</button>
+      <button class="cat-chip" data-status="process">Diproses</button>
+      <button class="cat-chip" data-status="ship">Dikirim</button>
+      <button class="cat-chip" data-status="done">Selesai</button>
     </div>
     <div id="orderList"></div>
   </div>
 </main>
 
 <footer class="ln-footer py-4 mt-5">
-  <div class="container d-flex justify-content-between"><span class="footer-brand">🌊 Laot Niaga</span></div>
+  <div class="container d-flex justify-content-between"><span class="footer-brand">Laot Niaga</span></div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/api.js"></script><script src="js/cart.js"></script><script src="js/theme.js"></script><script src="js/ai-assistant.js"></script>
 <script>
 let allOrders = [], currentFilter = '';
-const statusMap = { process:'⚙️ Diproses', ship:'🚚 Dikirim', done:'✅ Selesai', new:'🆕 Baru' };
+const statusMap = { process:'Diproses', ship:'Dikirim', done:' Selesai', new:' Baru' };
 const badgeMap = { process:'badge-status-process', ship:'badge-status-ship', done:'badge-status-done', new:'badge-status-new' };
 
 function orderCard(o) {
@@ -72,7 +72,7 @@ function render() {
 }
 
 function showReviewModal(orderId) {
-  showToast('Fitur ulasan segera tersedia! ⭐','info');
+  showToast('Fitur ulasan segera tersedia! ','info');
 }
 
 document.querySelectorAll('.cat-chip').forEach(b=>b.addEventListener('click',()=>{
