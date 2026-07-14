@@ -74,8 +74,11 @@ function renderDetail(p) {
           <div class="thumb" onclick="setMainImg('assets/img/abon ikan.jpg',this)"><img src="assets/img/abon ikan.jpg" alt="thumb"></div>
         </div>
       </div>
+    </div>
+
+    <div class="col-lg-7">
       <!-- Seller Card -->
-      <div class="store-card mt-4">
+      <div class="store-card mb-3" style="position:relative;z-index:5">
         <div class="store-left">
           <img src="assets/img/logo biru.png" class="store-logo" alt="${p.store_name}">
           <div>
@@ -85,9 +88,6 @@ function renderDetail(p) {
         </div>
         <a href="chat.html?seller=${p.seller_id||1}" class="store-chat btn btn-sm"><i class="bi bi-chat me-1"></i>Chat Penjual</a>
       </div>
-    </div>
-
-    <div class="col-lg-7">
       <div class="mb-2">${tags}</div>
       ${disc>0?`<span class="badge badge-yellow rounded-pill mb-2">Diskon ${disc}%</span>`:''}
       <h1 class="section-title">${p.name}</h1>

@@ -55,6 +55,9 @@
               <label class="d-flex align-items-center gap-2 py-1" style="cursor:pointer;font-size:.88rem"><input type="radio" name="cat" value="Siap Santap" class="form-check-input mt-0"> Siap Santap</label>
               <label class="d-flex align-items-center gap-2 py-1" style="cursor:pointer;font-size:.88rem"><input type="radio" name="cat" value="Camilan Laut" class="form-check-input mt-0"> Camilan Laut</label>
               <label class="d-flex align-items-center gap-2 py-1" style="cursor:pointer;font-size:.88rem"><input type="radio" name="cat" value="Bumbu Laut" class="form-check-input mt-0"> Bumbu Laut</label>
+              <button class="btn btn-sm btn-ghost w-100 mt-2" onclick="addCustomCategory()" style="font-size:.78rem;color:var(--ocean)">
+                <i class="bi bi-plus-circle me-1"></i>Tambah Kategori
+              </button>
             </div>
           </div>
           <!-- Harga -->
@@ -84,8 +87,8 @@
             <span style="font-size:.82rem;color:var(--text-muted)">Urutkan:</span>
             <select class="form-select form-select-sm" id="sortSel" style="width:auto;font-size:.82rem">
               <option value="default">Relevan</option>
-              <option value="price-asc">Harga ↑</option>
-              <option value="price-desc">Harga ↓</option>
+              <option value="price-asc">Harga Terendah</option>
+              <option value="price-desc">Harga Tertinggi</option>
               <option value="rating">Rating</option>
               <option value="sold">Terlaris</option>
             </select>
@@ -99,6 +102,7 @@
           <button class="cat-chip" data-cat="Siap Santap">Siap Santap</button>
           <button class="cat-chip" data-cat="Camilan Laut">Camilan Laut</button>
           <button class="cat-chip" data-cat="Bumbu Laut">Bumbu</button>
+          <button class="cat-chip cat-chip-add" onclick="addCustomCategory()" style="border-style:dashed;color:var(--ocean);border-color:var(--ocean)"><i class="bi bi-plus"></i></button>
         </div>
 
         <!-- Product Grid -->
@@ -206,5 +210,33 @@ async function init() {
   applyFilters();
 }
 document.addEventListener('DOMContentLoaded', init);
+
+function addCustomCategory() {
+  const name = prompt('Masukkan nama kategori baru:');
+  if (!name || !name.trim()) return;
+  const val = name.trim();
+  const catFilter = document.getElementById('catFilter');
+  if (catFilter) {
+    const label = document.createElement('label');
+    label.className = 'form-check';
+    label.innerHTML = `<input class="form-check-input" type="radio" name="cat" value="${val}" onchange="filterProducts()"> ${val}`;
+    catFilter.appendChild(label);
+  }
+  const chipContainer = document.querySelector('.cat-scroll');
+  if (chipContainer) {
+    const addBtn = chipContainer.querySelector('.cat-chip-add');
+    const btn = document.createElement('button');
+    btn.className = 'cat-chip';
+    btn.textContent = val;
+    btn.onclick = function() {
+      document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
+      filterProducts();
+    };
+    if (addBtn) chipContainer.insertBefore(btn, addBtn);
+    else chipContainer.appendChild(btn);
+  }
+  showToast('Kategori "' + val + '" berhasil ditambahkan!', 'success');
+}
 </script>
 </body></html>
