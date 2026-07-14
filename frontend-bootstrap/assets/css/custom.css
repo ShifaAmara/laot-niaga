@@ -74,7 +74,7 @@
 [data-theme="dark"] {
   --navy:        #60a5fa;
   --ocean-light: #93c5fd;
-  --bg:          #0a0f1e;
+  --bg:          linear-gradient(135deg, #0a0f1e 0%, #2a3389 100%) fixed;
   --bg-white:    #111827;
   --bg-soft:     #151e35;
   --glass:       rgba(17,24,39,.75);
