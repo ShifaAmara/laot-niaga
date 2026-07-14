@@ -148,7 +148,8 @@ button { cursor:pointer; }
   transition: box-shadow var(--t), background var(--t);
 }
 .ln-navbar.scrolled { box-shadow: 0 4px 24px rgba(12,27,94,.1); }
-[data-theme="dark"] .ln-navbar { background: rgba(10,15,30,.88); }
+[data-theme="dark"] .ln-navbar { background: rgba(50, 65, 95, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); }
+[data-theme="dark"] .ln-navbar .navbar-brand img { filter: drop-shadow(0 1px 4px rgba(255,255,255,0.3)); }
 
 .brand-logo { height:40px; width:auto; object-fit:contain; }
 .nav-search {
