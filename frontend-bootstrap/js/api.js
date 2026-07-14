@@ -74,15 +74,15 @@ const DEMO_PRODUCTS = [
 ];
 
 const DEMO_SELLERS = [
-  { id:1, name:'Dapur Laot Leupung', owner:'Sari Pesisir', avatar:'assets/img/logo biru.png',
+  { id:1, name:'Dapur Laot Leupung', owner:'Sari Pesisir', avatar:'https://ui-avatars.com/api/?name=Dapur+Laot+Leupung&background=0284c7&color=fff&size=128',
     banner:'assets/img/lautpantai.png', rating:4.8, sold:481, followers:234, products:12,
     address:'Leupung, Aceh Besar', since:'2021',
     story:'UMKM pengolah hasil laut dengan bahan dari nelayan lokal. Berkomitmen pada kualitas, kebersihan, dan transparansi bahan.' },
-  { id:2, name:'Lhok Snack Bahari', owner:'Rahmi Bahari', avatar:'assets/img/logo biru.png',
+  { id:2, name:'Lhok Snack Bahari', owner:'Rahmi Bahari', avatar:'https://ui-avatars.com/api/?name=Lhok+Snack+Bahari&background=eab308&color=fff&size=128',
     banner:'assets/img/lautpantai.png', rating:4.7, sold:823, followers:412, products:8,
     address:'Banda Aceh', since:'2020',
     story:'Spesialis camilan laut khas Aceh yang telah melayani pembeli dari berbagai penjuru Indonesia.' },
-  { id:3, name:'Nelayan Segar Sabang', owner:'Pak Karim', avatar:'assets/img/logo biru.png',
+  { id:3, name:'Nelayan Segar Sabang', owner:'Pak Karim', avatar:'https://ui-avatars.com/api/?name=Nelayan+Segar+Sabang&background=14b8a6&color=fff&size=128',
     banner:'assets/img/lautpantai.png', rating:4.5, sold:145, followers:98, products:5,
     address:'Sabang, Aceh', since:'2022',
     story:'Langsung dari nelayan ke meja makan Anda. Ikan asin berkualitas dari perairan Sabang.' }

@@ -443,9 +443,7 @@
     <div class="col">
       <div class="product-card">
         ${disc > 0 ? `<div class="badge-discount">-${disc}%</div>` : ''}
-        <button class="wishlist-btn ${isWishlisted(p.id) ? 'active' : ''}" onclick="event.stopPropagation();toggleWishlist({id:${p.id},name:'${p.name}',image:'${p.image}'});this.classList.toggle('active')">
-          <i class="bi bi-heart${isWishlisted(p.id) ? '-fill' : ''}"></i>
-        </button>
+
         <div class="img-wrapper"><a href="product-detail.html?id=${p.id}">
           <img class="card-img-top" src="${productImage(p)}" alt="${p.name}" loading="lazy">
         </a></div>

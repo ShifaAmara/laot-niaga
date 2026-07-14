@@ -84,17 +84,14 @@ let DEMO_MESSAGES = {};
 
 if (isUmkm) {
   DEMO_CONVS = [
-    { id:1, seller_id:1, name:'Ahmad Fauzi', avatar:'https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=0c1b5e&color=fff', online:true, last:'Iya kak, stok masih ada 😊', time:'10:32', unread:2 },
-    { id:2, seller_id:2, name:'Budi Santoso', avatar:'https://ui-avatars.com/api/?name=Budi+Santoso&background=random', online:false, last:'Siap, segera dikemas kak', time:'Kemarin', unread:0 },
+    { id:1, seller_id:1, name:'Ahmad Fauzi', avatar:'https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=0c1b5e&color=fff', online:true, last:'2 pack ya kak. Bisa dikirim ke Jakarta?', time:'10:05', unread:1 },
+    { id:2, seller_id:2, name:'Budi Santoso', avatar:'https://ui-avatars.com/api/?name=Budi+Santoso&background=random', online:false, last:'Pesanan saya sudah dikemas?', time:'Kemarin', unread:0 },
   ];
   DEMO_MESSAGES = {
     1: [
-      { from:'me', text:'Halo kak! Ada yang bisa saya bantu? 😊', time:'10:00' },
-      { from:'other', text:'Halo! Masih ada stok Keumamah Premium?', time:'10:01' },
-      { from:'me', text:'Iya kak, stok masih ada 24 pack. Mau pesan berapa?', time:'10:02' },
-      { from:'other', text:'2 pack ya kak. Bisa dikirim ke Jakarta?', time:'10:05' },
-      { from:'me', text:'Bisa kak! Estimasi 3-5 hari via JNE. Langsung order aja di marketplace ya kak', time:'10:06' },
-      { from:'me', text:'Iya kak, stok masih ada 😊', time:'10:32' }
+      { from:'other', text:'Halo! Masih ada stok Keumamah Premium?', time:'10:00' },
+      { from:'me', text:'Halo kak! Ada yang bisa saya bantu? Iya, stok masih ada 24 pack. Mau pesan berapa?', time:'10:02' },
+      { from:'other', text:'2 pack ya kak. Bisa dikirim ke Jakarta?', time:'10:05' }
     ],
     2: [
       { from:'other', text:'Pesanan saya sudah dikemas?', time:'Kemarin 14:00' },
@@ -103,25 +100,23 @@ if (isUmkm) {
   };
 } else {
   DEMO_CONVS = [
-    { id:1, seller_id:1, name:'Dapur Laot Leupung', avatar:'assets/img/logo biru.png', online:true, last:'Iya kak, stok masih ada 😊', time:'10:32', unread:2 },
-    { id:2, seller_id:2, name:'Lhok Snack Bahari', avatar:'assets/img/logo biru.png', online:false, last:'Siap, akan segera dikemas!', time:'Kemarin', unread:0 },
-    { id:3, seller_id:3, name:'Nelayan Segar Sabang', avatar:'assets/img/logo biru.png', online:true, last:'Terima kasih sudah pesan 🙏', time:'Sen', unread:0 }
+    { id:1, seller_id:1, name:'Dapur Laot Leupung', avatar:'https://ui-avatars.com/api/?name=Dapur+Laot+Leupung&background=0284c7&color=fff&size=128', online:true, last:'Bisa kak! Estimasi 3-5 hari via JNE.', time:'10:06', unread:1 },
+    { id:2, seller_id:2, name:'Lhok Snack Bahari', avatar:'https://ui-avatars.com/api/?name=Lhok+Snack+Bahari&background=eab308&color=fff&size=128', online:false, last:'Siap, akan segera dikemas!', time:'Kemarin', unread:0 },
+    { id:3, seller_id:3, name:'Nelayan Segar Sabang', avatar:'https://ui-avatars.com/api/?name=Nelayan+Segar+Sabang&background=14b8a6&color=fff&size=128', online:true, last:'Terima kasih sudah pesan 🙏', time:'Sen', unread:0 }
   ];
   DEMO_MESSAGES = {
     1: [
-      { from:'other', text:'Halo kak! Ada yang bisa saya bantu? 😊', time:'10:00' },
-      { from:'me', text:'Halo! Masih ada stok Keumamah Premium?', time:'10:01' },
-      { from:'other', text:'Iya kak, stok masih ada 24 pack. Mau pesan berapa?', time:'10:02' },
+      { from:'me', text:'Halo! Masih ada stok Keumamah Premium?', time:'10:00' },
+      { from:'other', text:'Halo kak! Ada yang bisa saya bantu? Iya, stok masih ada 24 pack. Mau pesan berapa?', time:'10:02' },
       { from:'me', text:'2 pack ya kak. Bisa dikirim ke Jakarta?', time:'10:05' },
-      { from:'other', text:'Bisa kak! Estimasi 3-5 hari via JNE. Langsung order aja di marketplace ya kak ', time:'10:06' },
-      { from:'other', text:'Iya kak, stok masih ada 😊', time:'10:32' }
+      { from:'other', text:'Bisa kak! Estimasi 3-5 hari via JNE. Langsung order aja di marketplace ya kak', time:'10:06' }
     ],
     2: [
       { from:'me', text:'Pesanan saya sudah dikemas?', time:'Kemarin 14:00' },
       { from:'other', text:'Siap, akan segera dikemas!', time:'Kemarin 14:05' }
     ],
     3: [
-      { from:'other', text:'Terima kasih sudah pesan ', time:'Sen 09:00' }
+      { from:'other', text:'Terima kasih sudah pesan 🙏', time:'Sen 09:00' }
     ]
   };
 }

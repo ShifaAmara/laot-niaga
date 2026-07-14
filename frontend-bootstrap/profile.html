@@ -40,7 +40,7 @@
           <hr style="border-color:var(--line)">
           <div class="d-flex flex-column gap-2 text-start">
             <a href="orders.html" class="btn btn-ghost btn-sm text-start"><i class="bi bi-bag me-2" style="color:var(--ocean)"></i>Pesanan Saya</a>
-            <a href="#" class="btn btn-ghost btn-sm text-start"><i class="bi bi-heart me-2" style="color:#ef4444"></i>Wishlist</a>
+
             <a href="chat.html" class="btn btn-ghost btn-sm text-start"><i class="bi bi-chat me-2" style="color:var(--teal)"></i>Pesan</a>
             <a href="dashboard.html" class="btn btn-ghost btn-sm text-start" id="dashLink" style="display:none"><i class="bi bi-speedometer2 me-2" style="color:var(--yellow)"></i>Dashboard Penjual</a>
             <hr style="border-color:var(--line)">
@@ -95,12 +95,7 @@
           </form>
         </div>
 
-        <!-- Stats (buyer) -->
-        <div class="row g-3 mt-2" id="buyerStats">
-          <div class="col-4"><div class="stat-card" style="--accent:var(--ocean);--accent-pale:var(--ocean-pale)"><div class="stat-icon">📦</div><div class="stat-value" id="statOrders">0</div><div class="stat-label">Pesanan</div></div></div>
-          <div class="col-4"><div class="stat-card" style="--accent:var(--yellow);--accent-pale:var(--yellow-pale)"><div class="stat-icon">❤️</div><div class="stat-value" id="statWl">0</div><div class="stat-label">Wishlist</div></div></div>
-          <div class="col-4"><div class="stat-card" style="--accent:var(--teal);--accent-pale:var(--teal-pale)"><div class="stat-icon">⭐</div><div class="stat-value">4.9</div><div class="stat-label">Poin Loyalti</div></div></div>
-        </div>
+        <!-- Stats dihapus sesuai permintaan -->
       </div>
     </div>
   </div>
@@ -120,9 +115,7 @@ function loadProfile() {
   document.getElementById('editPhone').value = user.phone||'';
   document.getElementById('editAddress').value = user.address||'';
   if (user.role==='umkm') document.getElementById('dashLink').style.display='';
-  // Stats
-  document.getElementById('statOrders').textContent = DEMO_ORDERS.length;
-  document.getElementById('statWl').textContent = JSON.parse(localStorage.getItem('lnWishlist')||'[]').length;
+  // Stats dihapus
 }
 
 document.getElementById('profileForm').addEventListener('submit', e => {

@@ -139,9 +139,7 @@ function productCard(p) {
   return `<div class="col reveal">
     <div class="product-card">
       ${disc>0?`<div class="badge-discount">-${disc}%</div>`:''}
-      <button class="wishlist-btn ${isWishlisted(p.id)?'active':''}" onclick="event.stopPropagation();var a=toggleWishlist({id:${p.id},name:'${p.name.replace(/'/g,"\\'")}',image:'${productImage(p)}'});this.classList.toggle('active',a);this.querySelector('i').className='bi bi-heart'+(a?'-fill':'')">
-        <i class="bi bi-heart${isWishlisted(p.id)?'-fill':''}"></i>
-      </button>
+
       <div class="img-wrapper"><a href="product-detail.html?id=${p.id}">
         <img class="card-img-top" src="${productImage(p)}" alt="${p.name}" loading="lazy">
       </a></div>

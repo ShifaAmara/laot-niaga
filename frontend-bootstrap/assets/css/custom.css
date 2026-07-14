@@ -474,28 +474,28 @@ button { cursor:pointer; }
 
 /* ─── 13. SEARCH BAR ───────────────────────────────────────── */
 .search-mega {
-  display:flex; align-items:stretch; background:var(--glass-strong);
-  border:1.5px solid var(--glass-border2); border-radius:var(--r-xl);
-  overflow:hidden; box-shadow:0 4px 24px rgba(12,27,94,.1);
-  transition:var(--t); max-width:700px;
+  display:flex; align-items:center; background:var(--glass-strong);
+  border:1.5px solid var(--glass-border2); border-radius:var(--r-full);
+  padding:6px; box-shadow:0 4px 24px rgba(12,27,94,.1);
+  transition:var(--t); max-width:700px; width:100%;
 }
 .search-mega:focus-within { border-color:var(--ocean); box-shadow:0 0 0 3px rgba(21,101,192,.15); }
 .search-mega select {
-  border:none; background:var(--bg-soft); padding:0 16px;
-  color:var(--text-2); font-size:.85rem; font-weight:600;
-  border-right:1px solid var(--glass-border2); outline:none; min-width:110px;
+  border:none; background:var(--ocean); color:#fff;
+  border-radius:var(--r-full); padding:10px 18px; font-size:.85rem; font-weight:600;
+  outline:none; cursor:pointer; flex-shrink:0;
 }
 .search-mega input {
   flex:1; border:none; background:transparent; outline:none;
-  padding:14px 16px; font-size:.95rem; color:var(--text);
+  padding:10px 16px; font-size:.95rem; color:var(--text); min-width:0;
 }
 .search-mega input::placeholder { color:var(--text-muted); }
 .search-mega .btn-search {
   background:linear-gradient(135deg,var(--navy),var(--ocean));
-  color:#fff; border:none; padding:0 24px; font-weight:700;
-  font-size:.9rem; transition:var(--t);
+  color:#fff; border:none; border-radius:var(--r-full); padding:10px 24px;
+  font-weight:700; font-size:.9rem; transition:var(--t); flex-shrink:0; cursor:pointer;
 }
-.search-mega .btn-search:hover { background:linear-gradient(135deg,var(--ocean),var(--navy)); }
+.search-mega .btn-search:hover { background:linear-gradient(135deg,var(--ocean),var(--navy)); transform:translateY(-1px); box-shadow:0 4px 12px rgba(21,101,192,.2); }
 
 /* ─── 14. PRODUCT DETAIL ───────────────────────────────────── */
 .product-gallery .main-img {
@@ -1183,12 +1183,8 @@ button { cursor:pointer; }
 .store-chat:hover { background:var(--ocean); color:#fff; }
 
 /* ─── 38. SEARCH MEGA ────────────────────────────────────── */
-.search-mega { display:flex; align-items:center; background:var(--glass); backdrop-filter:var(--glass-blur); border:1.5px solid var(--glass-border2); border-radius:var(--r-2xl); padding:8px 8px 8px 4px; box-shadow:var(--glass-shadow); max-width:700px; }
-.search-mega select { background:var(--ocean); color:#fff; border:none; border-radius:var(--r-xl); padding:8px 12px; font-size:.82rem; font-weight:600; outline:none; cursor:pointer; }
-.search-mega input { flex:1; border:none; background:transparent; outline:none; font-size:.95rem; color:var(--text); padding:8px 14px; }
-.search-mega input::placeholder { color:var(--text-muted); }
-.btn-search { background:linear-gradient(135deg,var(--navy),var(--ocean)); color:#fff; border:none; border-radius:var(--r-xl); padding:8px 20px; font-weight:700; font-size:.88rem; cursor:pointer; transition:var(--t); flex-shrink:0; }
-.btn-search:hover { transform:scale(1.02); box-shadow:0 4px 16px rgba(21,101,192,.35); }
+
+
 
 /* ─── 39. TYPING INDICATOR ───────────────────────────────── */
 .typing-indicator { display:inline-flex; align-items:center; gap:4px; }
@@ -1271,8 +1267,8 @@ button { cursor:pointer; }
 .product-card .d-flex.mt-auto { margin-top:auto !important; }
 
 /* Fix btn-addcart in flex layout */
-.product-card .btn-addcart { margin-top:0; padding:7px 8px; font-size:.75rem; }
-.product-card .btn-buynow { padding:7px 8px; font-size:.75rem; }
+.product-card .btn-addcart { margin-top:0; padding:7px 8px; font-size:.75rem; flex: 1 1 50%; }
+.product-card .btn-buynow { padding:7px 8px; font-size:.75rem; flex: 1 1 50%; }
 
 /* Dashboard navbar buttons - smaller on mobile */
 @media (max-width:768px) {
